@@ -1,0 +1,237 @@
+/* =========================================================
+   NOTIFY — SweetAlert2 Custom Styles
+   Theme + Accent Aware
+========================================================= */
+
+/* =========================================================
+   POPUP BASE — Theme colors use करता है
+========================================================= */
+
+.notify-popup {
+  border-radius: 18px !important;
+  padding: 28px 26px 22px !important;
+  font-family: Arial, sans-serif !important;
+  background: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  box-shadow: var(--card-shadow), 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid var(--border-color) !important;
+  transition: background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease !important;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.notify-popup .swal2-title {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.2px !important;
+  margin-bottom: 6px !important;
+  padding: 0 !important;
+}
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.notify-popup .swal2-html-container {
+  font-size: 14.5px !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.55 !important;
+  margin: 6px 0 4px !important;
+  padding: 0 !important;
+}
+
+/* =========================================================
+   ICON BASE
+========================================================= */
+
+.notify-popup .swal2-icon {
+  margin: 8px auto 14px !important;
+  border-width: 3px !important;
+}
+
+/* SUCCESS — Green (theme independent) */
+
+.notify-popup .swal2-icon.swal2-success {
+  color: #10b981 !important;
+  border-color: #10b981 !important;
+}
+
+.notify-popup
+  .swal2-icon.swal2-success
+  [class^="swal2-success-line"] {
+  background-color: #10b981 !important;
+}
+
+.notify-popup
+  .swal2-icon.swal2-success
+  .swal2-success-ring {
+  border: 3px solid rgba(16, 185, 129, 0.28) !important;
+}
+
+/* ERROR — Red */
+
+.notify-popup .swal2-icon.swal2-error {
+  color: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.notify-popup
+  .swal2-icon.swal2-error
+  [class^="swal2-x-mark-line"] {
+  background-color: #dc2626 !important;
+}
+
+/* WARNING — Orange */
+
+.notify-popup .swal2-icon.swal2-warning {
+  color: #f59e0b !important;
+  border-color: #f59e0b !important;
+}
+
+/* INFO — Blue */
+
+.notify-popup .swal2-icon.swal2-info {
+  color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+/* =========================================================
+   ✅ CONFIRM BUTTON — Accent Color
+========================================================= */
+
+.notify-confirm-btn {
+  background: var(--accent-color) !important;
+  color: var(--accent-text) !important;
+  border: 1px solid var(--accent-color) !important;
+  border-radius: 10px !important;
+  padding: 10px 22px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px !important;
+  box-shadow: 0 4px 14px var(--accent-light) !important;
+  transition: background-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+}
+
+.notify-confirm-btn:hover {
+  background: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+  box-shadow: 0 6px 18px var(--accent-light) !important;
+}
+
+.notify-confirm-btn:active {
+  box-shadow: 0 2px 8px var(--accent-light) !important;
+}
+
+.notify-confirm-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--accent-light) !important;
+}
+
+/* =========================================================
+   CANCEL BUTTON — Theme neutral
+========================================================= */
+
+.notify-cancel-btn {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 10px !important;
+  padding: 10px 22px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+}
+
+.notify-cancel-btn:hover {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--text-secondary) !important;
+}
+
+.notify-cancel-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px var(--accent-light) !important;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.notify-popup .swal2-actions {
+  margin-top: 18px !important;
+  gap: 10px !important;
+}
+
+/* =========================================================
+   BACKDROP — Theme aware
+========================================================= */
+
+.swal2-container.swal2-backdrop-show {
+  background: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Light theme — थोड़ा softer backdrop */
+
+html[data-theme="light"]
+  .swal2-container.swal2-backdrop-show {
+  background: rgba(0, 0, 0, 0.35) !important;
+}
+
+/* =========================================================
+   TIMER PROGRESS BAR
+========================================================= */
+
+.notify-popup .swal2-timer-progress-bar {
+  background: var(--accent-color) !important;
+  height: 3px !important;
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.notify-popup .swal2-loader {
+  border-color: var(--accent-color) transparent
+    var(--accent-color) transparent !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .notify-popup {
+    width: calc(100% - 32px) !important;
+    padding: 22px 18px 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .notify-popup .swal2-title {
+    font-size: 17px !important;
+  }
+
+  .notify-popup .swal2-html-container {
+    font-size: 13.5px !important;
+  }
+
+  .notify-confirm-btn,
+  .notify-cancel-btn {
+    padding: 9px 18px !important;
+    font-size: 13.5px !important;
+  }
+}

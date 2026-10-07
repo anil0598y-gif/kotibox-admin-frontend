@@ -1,0 +1,241 @@
+.view-ad-page {
+  width: 100%;
+  min-height: calc(100vh - 60px);
+  color: var(--text-primary);
+}
+
+.view-ad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.view-ad-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.view-ad-close {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.view-ad-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, .75fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.view-ad-player-card,
+.view-ad-info,
+.view-ad-empty {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.view-ad-player-card {
+  overflow: hidden;
+}
+
+.view-ad-player {
+  position: relative;
+  min-height: 460px;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.view-ad-player video,
+.view-ad-player img {
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  display: block;
+}
+
+.view-ad-player audio {
+  width: min(560px, 90%);
+}
+
+.view-ad-no-media {
+  color: #fff;
+  font-size: 16px;
+}
+
+.view-ad-audio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.view-ad-audio-icon {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  background: rgba(255, 255, 255, .12);
+}
+
+.view-ad-overlay {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .72);
+  color: #fff;
+  font-size: 13px;
+}
+
+.view-ad-skip {
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.1);
+  color: #aaa;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: not-allowed;
+}
+
+.view-ad-skip.enabled {
+  color: #fff;
+  cursor: pointer;
+  background: rgba(255,255,255,.18);
+}
+
+.view-ad-finished {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(0,0,0,.72);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.view-ad-info {
+  padding: 24px;
+}
+
+.view-ad-info h1 {
+  margin: 14px 0 10px;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.view-ad-info > p {
+  margin: 0 0 22px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.view-ad-details {
+  border-top: 1px solid var(--border-color);
+}
+
+.view-ad-details > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.view-ad-details strong {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.view-ad-details span {
+  text-align: right;
+  font-size: 14px;
+}
+
+.view-ad-target {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.view-ad-empty {
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.view-ad-empty h2 {
+  margin-bottom: 20px;
+}
+
+.view-ad-page .ad-primary-btn,
+.view-ad-page .ad-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .view-ad-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .view-ad-player {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 600px) {
+  .view-ad-header {
+    align-items: flex-start;
+  }
+
+  .view-ad-header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .view-ad-player {
+    min-height: 260px;
+  }
+
+  .view-ad-overlay {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .view-ad-skip {
+    width: 100%;
+  }
+}

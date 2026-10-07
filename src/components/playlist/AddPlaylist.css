@@ -1,0 +1,275 @@
+.add-playlist-page {
+  min-height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  color: var(--text-color);
+  background: var(--app-bg);
+}
+
+.add-playlist-header {
+  margin-bottom: 25px;
+}
+
+.add-playlist-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  border: none;
+  background: transparent;
+  color: var(--muted-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.2s ease;
+}
+
+.add-playlist-back-btn:hover {
+  color: var(--accent-color);
+}
+
+.add-playlist-header h1 {
+  margin: 0 0 7px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.add-playlist-header p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 14px;
+}
+
+.add-playlist-form {
+  max-width: 900px;
+}
+
+.playlist-form-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 1px 3px var(--card-shadow);
+}
+
+.playlist-form-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--accent-color);
+}
+
+.playlist-form-title div {
+  color: var(--text-color);
+}
+
+.playlist-form-title h2 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
+.playlist-form-title p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  padding: 12px 13px;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-shadow);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--muted-text);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: var(--input-bg);
+  color: var(--text-color);
+}
+
+/* ========================================
+   ✅ COVER PREVIEW — Image size control
+======================================== */
+
+.playlist-cover-preview {
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.playlist-cover-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========================================
+   ACTIONS
+======================================== */
+
+.add-playlist-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.cancel-playlist-btn,
+.save-playlist-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cancel-playlist-btn {
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.cancel-playlist-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--accent-border);
+  color: var(--accent-color);
+}
+
+.save-playlist-btn {
+  border: 1px solid var(--accent-color);
+  background: var(--accent-color);
+  color: #ffffff;
+}
+
+.save-playlist-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.save-playlist-btn:disabled,
+.cancel-playlist-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========================================
+   FOCUS
+======================================== */
+
+.add-playlist-page button:focus-visible,
+.add-playlist-page input:focus-visible,
+.add-playlist-page textarea:focus-visible,
+.add-playlist-page select:focus-visible {
+  outline: 3px solid var(--accent-shadow);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 700px) {
+  .add-playlist-page {
+    padding: 20px;
+  }
+
+  .playlist-form-card {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .add-playlist-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .cancel-playlist-btn,
+  .save-playlist-btn {
+    width: 100%;
+  }
+
+  .playlist-cover-preview {
+    max-width: 200px;
+  }
+}

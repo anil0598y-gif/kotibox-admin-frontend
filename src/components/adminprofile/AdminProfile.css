@@ -1,0 +1,1487 @@
+/* =========================================================
+   ADMIN PROFILE PAGE
+========================================================= */
+
+.admin-profile-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px;
+  color: var(--text-primary, #111111);
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-profile-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.admin-profile-breadcrumb {
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: var(--text-secondary, #6b7280);
+}
+
+.admin-profile-header h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-header p {
+  margin: 7px 0 0;
+  font-size: 14px;
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+========================================================= */
+
+.admin-profile-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 0 17px;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--accent-color, #111111) 25%,
+      transparent
+    );
+
+  border-radius: 9px;
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #111111) 7%,
+    transparent
+  );
+
+  color: var(--accent-color, #111111);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-profile-edit-btn:hover {
+  background: var(--accent-color, #111111);
+  color: #ffffff;
+  border-color: var(--accent-color, #111111);
+}
+
+.admin-profile-edit-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================================
+   HERO PROFILE
+========================================================= */
+
+.admin-profile-hero {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+
+  width: 100%;
+  min-height: 180px;
+
+  padding: 30px;
+
+  margin-bottom: 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 18px;
+
+  background: var(--card-bg, #ffffff);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LARGE AVATAR
+========================================================= */
+
+.admin-profile-avatar-large {
+  width: 115px;
+  height: 115px;
+  min-width: 115px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  border: 4px solid
+    color-mix(
+      in srgb,
+      var(--accent-color, #111111) 18%,
+      transparent
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--accent-color, #111111) 15%,
+        transparent
+      ),
+      color-mix(
+        in srgb,
+        var(--accent-color, #111111) 5%,
+        transparent
+      )
+    );
+
+  color: var(--accent-color, #111111);
+
+  box-sizing: border-box;
+}
+
+.admin-profile-avatar-large img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   HERO INFORMATION
+========================================================= */
+
+.admin-profile-hero-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.admin-profile-hero-info h2 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-hero-info p {
+  margin: 6px 0 12px;
+
+  font-size: 14px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   ROLE BADGE
+========================================================= */
+
+.admin-profile-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 11px;
+
+  border-radius: 999px;
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #111111) 8%,
+    transparent
+  );
+
+  color: var(--accent-color, #111111);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.admin-profile-status-badge {
+  position: absolute;
+
+  top: 25px;
+  right: 25px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  background: #ecfdf3;
+
+  color: #16a34a;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
+.admin-profile-card {
+  width: 100%;
+
+  margin-bottom: 24px;
+
+  padding: 26px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+
+  background: var(--card-bg, #ffffff);
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.admin-profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.admin-profile-card-header h2 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-card-header p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   PROFILE INFORMATION GRID
+========================================================= */
+
+.admin-profile-info-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   PROFILE INFO ITEM
+========================================================= */
+
+.admin-profile-info-item {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  min-width: 0;
+
+  padding: 16px;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 11px;
+
+  background: var(--background-secondary, #f8fafc);
+
+  box-sizing: border-box;
+}
+
+.admin-profile-info-icon {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #111111) 8%,
+    transparent
+  );
+
+  color: var(--accent-color, #111111);
+}
+
+.admin-profile-info-icon svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-info-item > div:last-child {
+  min-width: 0;
+}
+
+.admin-profile-info-item span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 12px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+.admin-profile-info-item strong {
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text-primary, #111111);
+}
+
+
+/* =========================================================
+   ACTIVITY GRID
+========================================================= */
+
+.admin-profile-activity-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   ACTIVITY ITEM
+========================================================= */
+
+.admin-profile-activity-item {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 18px;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 11px;
+
+  background: var(--background-secondary, #f8fafc);
+
+  box-sizing: border-box;
+}
+
+.admin-profile-activity-item > svg {
+  width: 21px;
+  height: 21px;
+  min-width: 21px;
+
+  color: var(--accent-color, #111111);
+
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-activity-item span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 12px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+.admin-profile-activity-item strong {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text-primary, #111111);
+}
+
+
+/* =========================================================
+   SECURITY CARD
+========================================================= */
+
+.admin-profile-security-card {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  width: 100%;
+
+  margin-bottom: 24px;
+
+  padding: 22px 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+
+  background: var(--card-bg, #ffffff);
+}
+
+
+/* =========================================================
+   SECURITY ICON
+========================================================= */
+
+.admin-profile-security-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #111111) 8%,
+    transparent
+  );
+
+  color: var(--accent-color, #111111);
+}
+
+.admin-profile-security-icon svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   SECURITY CONTENT
+========================================================= */
+
+.admin-profile-security-content {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.admin-profile-security-content h3 {
+  margin: 0 0 5px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-security-content p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   SECURITY BUTTON
+========================================================= */
+
+.admin-profile-security-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding: 0 15px;
+
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 9px;
+
+  background: var(--background-primary, #ffffff);
+
+  color: var(--text-primary, #111111);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.admin-profile-security-btn:hover {
+  border-color: var(--accent-color, #111111);
+
+  color: var(--accent-color, #111111);
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #111111) 5%,
+    transparent
+  );
+}
+
+
+/* =========================================================
+   DANGER / LOGOUT CARD
+========================================================= */
+
+.admin-profile-danger-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  width: 100%;
+
+  padding: 22px 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #fecaca;
+  border-radius: 16px;
+
+  background: #fffafa;
+}
+
+.admin-profile-danger-card h3 {
+  margin: 0 0 5px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  color: #991b1b;
+}
+
+.admin-profile-danger-card p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #7f1d1d;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.admin-profile-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding: 0 16px;
+
+  border: 1px solid #ef4444;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #dc2626;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.admin-profile-logout-btn:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.admin-profile-logout-btn svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   EDIT PROFILE CONTAINER
+========================================================= */
+
+.admin-profile-edit-container {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+
+/* =========================================================
+   EDIT IMAGE SECTION
+========================================================= */
+
+.admin-profile-image-section {
+  width: 100%;
+
+  padding: 26px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+
+  background: var(--card-bg, #ffffff);
+}
+
+.admin-profile-image-title {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.admin-profile-image-title > svg {
+  color: var(--accent-color, #111111);
+
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-image-title h2 {
+  margin: 0;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-image-title p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   IMAGE EDITOR
+========================================================= */
+
+.admin-profile-image-editor {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+}
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+.admin-profile-image-preview {
+  width: 150px;
+  height: 150px;
+
+  min-width: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border: 3px solid var(--border-color, #e5e7eb);
+
+  border-radius: 50%;
+
+  background: var(--background-secondary, #f3f4f6);
+
+  box-sizing: border-box;
+}
+
+.admin-profile-image-preview img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.admin-profile-image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-secondary, #9ca3af);
+}
+
+.admin-profile-image-placeholder svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-image-loading {
+  font-size: 13px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   IMAGE ACTIONS
+========================================================= */
+
+.admin-profile-image-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.admin-profile-upload-image-btn,
+.admin-profile-remove-image-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 40px;
+
+  padding: 0 16px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.admin-profile-upload-image-btn {
+  border: 1px solid var(--border-color, #d1d5db);
+
+  background: var(--background-primary, #ffffff);
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-upload-image-btn:hover {
+  border-color: var(--accent-color, #111111);
+
+  color: var(--accent-color, #111111);
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #111111) 5%,
+    transparent
+  );
+}
+
+.admin-profile-remove-image-btn {
+  border: 1px solid #ef4444;
+
+  background: transparent;
+
+  color: #ef4444;
+}
+
+.admin-profile-remove-image-btn:hover {
+  background: #fef2f2;
+}
+
+.admin-profile-upload-image-btn svg,
+.admin-profile-remove-image-btn svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-image-actions > span {
+  margin-top: 2px;
+
+  font-size: 12px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   EDIT FORM SECTION
+========================================================= */
+
+.admin-profile-form-section {
+  width: 100%;
+
+  padding: 26px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+
+  background: var(--card-bg, #ffffff);
+}
+
+.admin-profile-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.admin-profile-form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.admin-profile-form-group label {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: var(--text-primary, #111111);
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.admin-profile-input-wrapper {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  width: 100%;
+  height: 46px;
+
+  padding: 0 13px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #d1d5db);
+  border-radius: 9px;
+
+  background: var(--background-primary, #ffffff);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-profile-input-wrapper svg {
+  flex-shrink: 0;
+
+  color: var(--text-secondary, #6b7280);
+
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-input-wrapper:focus-within {
+  border-color: var(--accent-color, #111111);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--accent-color, #111111) 10%,
+      transparent
+    );
+}
+
+.admin-profile-input-wrapper input {
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+
+  padding: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text-primary, #111111);
+
+  font-size: 14px;
+}
+
+.admin-profile-input-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+
+/* =========================================================
+   ACCOUNT INFORMATION
+========================================================= */
+
+.admin-profile-account-info {
+  width: 100%;
+
+  padding: 26px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 16px;
+
+  background: var(--card-bg, #ffffff);
+}
+
+.admin-profile-account-info-title {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 24px;
+}
+
+.admin-profile-account-info-title > svg {
+  color: var(--accent-color, #111111);
+
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-account-info-title h2 {
+  margin: 0;
+
+  font-size: 19px;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-account-info-title p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+
+/* =========================================================
+   READ ONLY GRID
+========================================================= */
+
+.admin-profile-readonly-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.admin-profile-readonly-grid > div {
+  padding: 16px;
+
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 10px;
+
+  background: var(--background-secondary, #f8fafc);
+
+  box-sizing: border-box;
+}
+
+.admin-profile-readonly-grid span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 12px;
+
+  color: var(--text-secondary, #6b7280);
+}
+
+.admin-profile-readonly-grid strong {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 14px;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-readonly-grid strong svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-active-status {
+  color: #16a34a !important;
+}
+
+
+/* =========================================================
+   EDIT FORM FOOTER
+========================================================= */
+
+.admin-profile-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 12px;
+}
+
+.admin-profile-cancel-btn,
+.admin-profile-cancel-footer-btn,
+.admin-profile-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 0 18px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.admin-profile-cancel-btn,
+.admin-profile-cancel-footer-btn {
+  border: 1px solid var(--border-color, #d1d5db);
+
+  background: transparent;
+
+  color: var(--text-primary, #111111);
+}
+
+.admin-profile-cancel-btn:hover,
+.admin-profile-cancel-footer-btn:hover {
+  background: var(--background-secondary, #f3f4f6);
+}
+
+.admin-profile-cancel-btn svg,
+.admin-profile-cancel-footer-btn svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-save-btn {
+  border: 1px solid var(--accent-color, #111111);
+
+  background: var(--accent-color, #111111);
+
+  color: #ffffff;
+}
+
+.admin-profile-save-btn:hover {
+  opacity: 0.9;
+}
+
+.admin-profile-save-btn svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.admin-profile-save-btn:disabled,
+.admin-profile-cancel-footer-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   ICON PROTECTION
+========================================================= */
+
+.admin-profile-page svg,
+.admin-profile-page .lucide,
+.admin-profile-page svg *,
+.admin-profile-page .lucide * {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
+
+[data-theme="light"] .admin-profile-page {
+  color: #111111;
+}
+
+[data-theme="light"] .admin-profile-hero,
+[data-theme="light"] .admin-profile-card,
+[data-theme="light"] .admin-profile-security-card,
+[data-theme="light"] .admin-profile-image-section,
+[data-theme="light"] .admin-profile-form-section,
+[data-theme="light"] .admin-profile-account-info {
+  background: #ffffff;
+}
+
+[data-theme="light"] .admin-profile-info-item,
+[data-theme="light"] .admin-profile-activity-item,
+[data-theme="light"] .admin-profile-readonly-grid > div {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .admin-profile-image-preview {
+  background: #f3f4f6;
+}
+
+
+/* =========================================================
+   DARK THEME SUPPORT
+========================================================= */
+
+[data-theme="dark"] .admin-profile-hero,
+[data-theme="dark"] .admin-profile-card,
+[data-theme="dark"] .admin-profile-security-card,
+[data-theme="dark"] .admin-profile-image-section,
+[data-theme="dark"] .admin-profile-form-section,
+[data-theme="dark"] .admin-profile-account-info {
+  background: var(--card-bg, #18181b);
+}
+
+[data-theme="dark"] .admin-profile-info-item,
+[data-theme="dark"] .admin-profile-activity-item,
+[data-theme="dark"] .admin-profile-readonly-grid > div {
+  background: var(--background-secondary, #202023);
+}
+
+[data-theme="dark"] .admin-profile-input-wrapper,
+[data-theme="dark"] .admin-profile-upload-image-btn,
+[data-theme="dark"] .admin-profile-cancel-btn,
+[data-theme="dark"] .admin-profile-cancel-footer-btn,
+[data-theme="dark"] .admin-profile-security-btn {
+  background: var(--background-primary, #111113);
+}
+
+[data-theme="dark"] .admin-profile-danger-card {
+  background: #211313;
+  border-color: #5f2525;
+}
+
+
+/* =========================================================
+   900px
+========================================================= */
+
+@media (max-width: 900px) {
+  .admin-profile-page {
+    padding: 24px;
+  }
+
+  .admin-profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-profile-activity-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-profile-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   700px
+========================================================= */
+
+@media (max-width: 700px) {
+  .admin-profile-page {
+    padding: 20px;
+  }
+
+  .admin-profile-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-profile-edit-btn {
+    width: fit-content;
+  }
+
+  .admin-profile-hero {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 24px;
+  }
+
+  .admin-profile-status-badge {
+    position: static;
+
+    margin-top: 4px;
+  }
+
+  .admin-profile-image-editor {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .admin-profile-image-preview {
+    width: 130px;
+    height: 130px;
+
+    min-width: 130px;
+  }
+
+  .admin-profile-readonly-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-profile-security-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .admin-profile-security-content {
+    width: calc(100% - 70px);
+    flex: none;
+  }
+
+  .admin-profile-security-btn {
+    width: 100%;
+  }
+
+  .admin-profile-danger-card {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .admin-profile-logout-btn {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   650px
+========================================================= */
+
+@media (max-width: 650px) {
+  .admin-profile-activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-profile-card,
+  .admin-profile-security-card,
+  .admin-profile-image-section,
+  .admin-profile-form-section,
+  .admin-profile-account-info {
+    padding: 20px;
+  }
+}
+
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+  .admin-profile-page {
+    padding: 15px;
+  }
+
+  .admin-profile-header h1 {
+    font-size: 24px;
+  }
+
+  .admin-profile-hero {
+    padding: 20px;
+  }
+
+  .admin-profile-avatar-large {
+    width: 95px;
+    height: 95px;
+    min-width: 95px;
+  }
+
+  .admin-profile-hero-info h2 {
+    font-size: 20px;
+  }
+
+  .admin-profile-card,
+  .admin-profile-security-card,
+  .admin-profile-image-section,
+  .admin-profile-form-section,
+  .admin-profile-account-info {
+    padding: 17px;
+  }
+
+  .admin-profile-form-footer {
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+  }
+
+  .admin-profile-cancel-footer-btn,
+  .admin-profile-save-btn {
+    width: 100%;
+  }
+
+  .admin-profile-upload-image-btn,
+  .admin-profile-remove-image-btn {
+    width: 100%;
+  }
+
+  .admin-profile-image-actions {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   420px
+========================================================= */
+
+@media (max-width: 420px) {
+  .admin-profile-info-item {
+    padding: 13px;
+  }
+
+  .admin-profile-info-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .admin-profile-activity-item {
+    padding: 14px;
+  }
+
+  .admin-profile-header p {
+    font-size: 13px;
+  }
+
+  .admin-profile-breadcrumb {
+    font-size: 12px;
+  }
+}

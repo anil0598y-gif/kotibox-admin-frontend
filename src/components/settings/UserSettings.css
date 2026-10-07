@@ -1,0 +1,760 @@
+/* =========================================
+   USER SETTINGS
+========================================= */
+
+.user-settings {
+  width: 100%;
+  color: var(--text-color, #1f2937);
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.settings-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.settings-page-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0 0 6px;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  color: var(--text-color, #1f2937);
+}
+
+.settings-page-header h2 svg {
+  color: var(--accent-color, #111827);
+}
+
+.settings-page-header p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: var(--muted-text, #6b7280);
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.user-settings-form {
+  width: 100%;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.settings-card {
+  width: 100%;
+
+  margin-bottom: 20px;
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  background: var(--card-bg, #ffffff);
+
+  border: 1px solid var(
+    --border-color,
+    #e5e7eb
+  );
+
+  border-radius: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.settings-card:hover {
+  border-color: var(
+    --accent-border,
+    #d1d5db
+  );
+
+  box-shadow:
+    0 4px 14px var(
+      --accent-shadow,
+      rgba(0, 0, 0, 0.05)
+    );
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.settings-card-header {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 14px;
+
+  margin-bottom: 22px;
+}
+
+.settings-card-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: var(
+    --accent-light,
+    #f3f4f6
+  );
+
+  color: var(
+    --accent-color,
+    #111827
+  );
+
+  font-size: 20px;
+}
+
+.settings-card-header h3 {
+  margin: 0 0 5px;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  color: var(
+    --text-color,
+    #1f2937
+  );
+}
+
+.settings-card-header p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: var(
+    --muted-text,
+    #6b7280
+  );
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.settings-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(
+    --text-color,
+    #374151
+  );
+}
+
+
+/* =========================================
+   INPUT / SELECT
+========================================= */
+
+.form-group input,
+.form-group select {
+  width: 100%;
+
+  min-height: 44px;
+
+  padding: 0 13px;
+
+  box-sizing: border-box;
+
+  outline: none;
+
+  border: 1px solid var(
+    --border-color,
+    #d1d5db
+  );
+
+  border-radius: 8px;
+
+  background: var(
+    --input-bg,
+    #ffffff
+  );
+
+  color: var(
+    --text-color,
+    #1f2937
+  );
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(
+    --accent-color,
+    #111827
+  );
+
+  box-shadow:
+    0 0 0 3px var(
+      --accent-light,
+      rgba(0, 0, 0, 0.08)
+    );
+}
+
+.form-group small {
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: var(
+    --muted-text,
+    #6b7280
+  );
+}
+
+
+/* =========================================
+   TOGGLE ROW
+========================================= */
+
+.setting-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 17px 0;
+
+  border-top: 1px solid var(
+    --border-color,
+    #e5e7eb
+  );
+}
+
+.setting-toggle-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.setting-toggle-row:last-child {
+  padding-bottom: 0;
+}
+
+
+/* =========================================
+   TOGGLE INFO
+========================================= */
+
+.setting-toggle-info {
+  min-width: 0;
+}
+
+.setting-title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 5px;
+}
+
+.setting-title-row svg {
+  flex-shrink: 0;
+
+  color: var(
+    --accent-color,
+    #111827
+  );
+
+  font-size: 16px;
+}
+
+.setting-toggle-info h4 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(
+    --text-color,
+    #374151
+  );
+}
+
+.setting-toggle-info p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: var(
+    --muted-text,
+    #6b7280
+  );
+}
+
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+.toggle-switch {
+  position: relative;
+
+  width: 48px;
+  height: 26px;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #d1d5db;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.toggle-switch span {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.2s ease;
+}
+
+.toggle-switch.active {
+  background: var(
+    --accent-color,
+    #111827
+  );
+}
+
+.toggle-switch.active span {
+  transform: translateX(22px);
+}
+
+.toggle-switch:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 3px var(
+      --accent-light,
+      rgba(0, 0, 0, 0.1)
+    );
+}
+
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.settings-summary-card {
+  margin-bottom: 0;
+}
+
+.settings-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 14px;
+
+  border: 1px solid var(
+    --border-color,
+    #e5e7eb
+  );
+
+  border-radius: 9px;
+
+  background: var(
+    --input-bg,
+    #ffffff
+  );
+}
+
+.summary-item span {
+  font-size: 12px;
+
+  color: var(
+    --muted-text,
+    #6b7280
+  );
+}
+
+.summary-item strong {
+  font-size: 13px;
+  font-weight: 700;
+
+  color: var(
+    --text-color,
+    #374151
+  );
+}
+
+.summary-item strong.enabled {
+  color: #16a34a;
+}
+
+.summary-item strong.disabled {
+  color: #dc2626;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.settings-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+.reset-settings-btn {
+  min-height: 44px;
+
+  padding: 0 20px;
+
+  border: 1px solid var(
+    --border-color,
+    #d1d5db
+  );
+
+  border-radius: 8px;
+
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+
+  color: var(
+    --text-color,
+    #374151
+  );
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.reset-settings-btn:hover {
+  background: var(
+    --hover-bg,
+    #f9fafb
+  );
+
+  border-color: #9ca3af;
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+.save-settings-btn {
+  min-height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(
+    --accent-color,
+    #111827
+  );
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.save-settings-btn:hover {
+  background: var(
+    --accent-hover,
+    #000000
+  );
+
+  transform: translateY(-1px);
+}
+
+.save-settings-btn:active {
+  transform: translateY(0);
+}
+
+.save-settings-btn:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+html.theme-dark .settings-card {
+  background: var(
+    --card-bg,
+    #1f2937
+  );
+
+  border-color: var(
+    --border-color,
+    #374151
+  );
+}
+
+html.theme-dark .form-group input,
+html.theme-dark .form-group select {
+  background: var(
+    --input-bg,
+    #111827
+  );
+
+  border-color: var(
+    --border-color,
+    #374151
+  );
+
+  color: var(
+    --text-color,
+    #f3f4f6
+  );
+}
+
+html.theme-dark .summary-item {
+  background: var(
+    --input-bg,
+    #111827
+  );
+
+  border-color: var(
+    --border-color,
+    #374151
+  );
+}
+
+html.theme-dark .reset-settings-btn {
+  background: var(
+    --card-bg,
+    #1f2937
+  );
+
+  border-color: var(
+    --border-color,
+    #374151
+  );
+
+  color: var(
+    --text-color,
+    #f3f4f6
+  );
+}
+
+
+/* =========================================
+   COMPACT MODE
+========================================= */
+
+html.compact-mode .settings-card {
+  padding: 18px;
+
+  margin-bottom: 14px;
+}
+
+html.compact-mode .settings-card-header {
+  margin-bottom: 16px;
+}
+
+html.compact-mode .setting-toggle-row {
+  padding: 13px 0;
+}
+
+html.compact-mode .settings-summary {
+  gap: 8px;
+}
+
+html.compact-mode .summary-item {
+  padding: 10px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .settings-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-summary {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .settings-card {
+    padding: 18px;
+  }
+
+  .settings-page-header h2 {
+    font-size: 20px;
+  }
+
+  .settings-card-header {
+    gap: 10px;
+  }
+
+  .settings-card-icon {
+    width: 38px;
+    height: 38px;
+
+    font-size: 18px;
+  }
+
+  .setting-toggle-row {
+    align-items: flex-start;
+  }
+
+  .settings-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .reset-settings-btn,
+  .save-settings-btn {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 380px) {
+
+  .settings-card {
+    padding: 15px;
+  }
+
+}

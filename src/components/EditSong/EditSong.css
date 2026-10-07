@@ -1,0 +1,442 @@
+/* =================================
+Edit Song Main
+================================= */
+
+.edit-song-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
+  box-sizing: border-box;
+  background: var(--app-bg);
+  color: var(--text-color);
+}
+
+/* =================================
+Header
+================================= */
+
+.edit-song-header {
+  margin-bottom: 25px;
+}
+
+.edit-song-header h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.edit-song-header p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-text);
+}
+
+/* =================================
+Form
+================================= */
+
+.edit-song-form {
+  width: 100%;
+}
+
+/* =================================
+Section
+================================= */
+
+.edit-song-section {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 24px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--card-bg);
+  box-shadow: 0 1px 2px var(--card-shadow, rgba(0, 0, 0, 0.02));
+}
+
+/* =================================
+Section Heading
+================================= */
+
+.edit-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.edit-section-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+}
+
+.edit-section-heading h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.edit-section-heading p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted-text);
+}
+
+/* =================================
+Upload Grid
+================================= */
+
+.edit-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* =================================
+Upload Box
+================================= */
+
+.edit-upload-box {
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px dashed var(--accent-border);
+  border-radius: 9px;
+  background: var(--hover-bg);
+  color: var(--accent-color);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.edit-upload-box:hover {
+  border-color: var(--accent-color);
+  background: var(--accent-light);
+  box-shadow: 0 3px 10px var(--accent-shadow);
+}
+
+.edit-upload-box input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.edit-upload-box svg {
+  margin-bottom: 10px;
+}
+
+.edit-upload-box strong {
+  max-width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.edit-upload-box span {
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--muted-text);
+}
+
+/* =================================
+Form Grid
+================================= */
+
+.edit-song-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+/* =================================
+Form Field
+================================= */
+
+.edit-form-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.edit-form-field label {
+  margin-bottom: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.edit-form-field label span {
+  color: #ef4444;
+}
+
+/* =================================
+Inputs
+================================= */
+
+.edit-form-field input,
+.edit-form-field select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  outline: none;
+  background: var(--input-bg);
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text-color);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.edit-form-field input:hover,
+.edit-form-field select:hover {
+  border-color: var(--accent-border);
+}
+
+.edit-form-field input:focus,
+.edit-form-field select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-shadow);
+}
+
+.edit-form-field input::placeholder {
+  color: var(--muted-text);
+}
+
+/* =================================
+Input With Icon
+================================= */
+
+.edit-input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.edit-input-with-icon svg {
+  position: absolute;
+  left: 12px;
+  z-index: 1;
+  color: var(--muted-text);
+  pointer-events: none;
+}
+
+.edit-input-with-icon input {
+  padding-left: 38px;
+}
+
+/* =================================
+Actions
+================================= */
+
+.edit-song-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 5px 0 20px;
+}
+
+/* =================================
+Cancel Button
+================================= */
+
+.edit-cancel-button {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.edit-cancel-button:hover {
+  background: var(--hover-bg);
+  border-color: var(--accent-border);
+  color: var(--text-color);
+}
+
+.edit-cancel-button:active {
+  transform: scale(0.98);
+}
+
+/* =================================
+Save Button
+================================= */
+
+.edit-save-button {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 18px;
+  border: 1px solid var(--accent-color);
+  border-radius: 7px;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+.edit-save-button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 4px 12px var(--accent-shadow);
+}
+
+.edit-save-button:active {
+  transform: translateY(1px);
+}
+
+/* =================================
+Not Found
+================================= */
+
+.edit-song-not-found {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  text-align: center;
+}
+
+.edit-song-not-found svg {
+  margin-bottom: 12px;
+  color: var(--muted-text);
+}
+
+.edit-song-not-found h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.edit-song-not-found p {
+  margin: 0 0 18px;
+  font-size: 13px;
+  color: var(--muted-text);
+}
+
+.edit-song-not-found button {
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 7px;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-song-not-found button:hover {
+  background: var(--accent-hover);
+}
+
+/* =================================
+Responsive
+================================= */
+
+@media (max-width: 900px) {
+  .edit-song-page {
+    padding: 20px;
+  }
+
+  .edit-upload-grid,
+  .edit-song-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .edit-song-page {
+    padding: 15px;
+  }
+
+  .edit-song-header h1 {
+    font-size: 24px;
+  }
+
+  .edit-song-header p {
+    font-size: 13px;
+  }
+
+  .edit-song-section {
+    padding: 18px;
+  }
+
+  .edit-section-heading {
+    align-items: flex-start;
+  }
+
+  .edit-upload-box {
+    min-height: 135px;
+  }
+
+  .edit-song-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .edit-cancel-button,
+  .edit-save-button {
+    width: 100%;
+  }
+}

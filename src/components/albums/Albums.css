@@ -1,0 +1,734 @@
+/* =========================================
+   ALBUMS PAGE
+========================================= */
+
+.albums-page {
+  padding: 30px;
+  min-height: 100%;
+  background: var(--app-bg);
+  color: var(--text-color);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.albums-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.albums-header h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.albums-header p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 14px;
+}
+
+/* =========================================
+   ADD ALBUM BUTTON
+========================================= */
+
+.add-album-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-album-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.album-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.album-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+
+.album-stat-icon {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+}
+
+.album-stat-card span {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.album-stat-card strong {
+  display: block;
+  color: var(--text-color);
+  font-size: 23px;
+  font-weight: 700;
+}
+
+/* =========================================
+   FILTER BOX
+========================================= */
+
+.albums-filter-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 25px;
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.album-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--muted-text);
+  background: var(--input-bg);
+}
+
+.album-search:focus-within {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-shadow);
+}
+
+.album-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.album-search input::placeholder {
+  color: var(--muted-text);
+}
+
+/* =========================================
+   FILTER SELECT
+========================================= */
+
+.albums-filter-box select {
+  height: 42px;
+  min-width: 150px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.albums-filter-box select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-shadow);
+}
+
+/* =========================================
+   ALBUM GRID
+========================================= */
+
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* =========================================
+   ✅ ALBUM CARD — Overlay Style
+========================================= */
+
+.album-card {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;              /* Square card */
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border: 1px solid var(--border-color);
+
+  background: var(--card-bg);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.album-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+
+  border-color: var(--accent-color);
+}
+
+/* =========================================
+   ✅ BACKGROUND IMAGE — Full Cover
+========================================= */
+
+.album-card-bg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  z-index: 0;
+
+  transition: transform 0.4s ease;
+}
+
+.album-card:hover .album-card-bg {
+  transform: scale(1.05);
+}
+
+.album-card-bg-fallback {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--accent-light);
+
+  color: var(--accent-color);
+
+  z-index: 0;
+}
+
+/* =========================================
+   ✅ GRADIENT OVERLAY
+========================================= */
+
+.album-card-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.05) 25%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   ✅ PLAY BUTTON — Top Right (hover)
+========================================= */
+
+.album-play-btn {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--accent-color);
+  color: #ffffff;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  transform: translateY(-8px);
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+
+  z-index: 3;
+}
+
+.album-card:hover .album-play-btn {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.album-play-btn:hover {
+  background: var(--accent-hover);
+
+  transform: scale(1.1);
+}
+
+/* =========================================
+   ✅ CONTENT OVERLAY
+========================================= */
+
+.album-card-content {
+  position: relative;
+
+  z-index: 2;
+
+  height: 100%;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TOP ROW (Status + More)
+========================================= */
+
+.album-card-top-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.album-status {
+  padding: 4px 10px;
+
+  border-radius: 12px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.album-status.active {
+  background: rgba(34, 197, 94, 0.85);
+  color: #ffffff;
+}
+
+.album-status.inactive {
+  background: rgba(120, 120, 120, 0.85);
+  color: #ffffff;
+}
+
+.album-more-btn {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.2s ease;
+}
+
+.album-more-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+
+  transform: scale(1.08);
+}
+
+/* =========================================
+   BOTTOM SECTION
+========================================= */
+
+.album-card-bottom {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.album-card-bottom h3 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #ffffff;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.album-artist {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   META
+========================================= */
+
+.album-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  flex-wrap: wrap;
+
+  margin-top: 2px;
+}
+
+.album-meta span {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.album-meta .album-tag {
+  padding: 3px 8px;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(10px);
+
+  font-size: 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.album-actions {
+  display: flex;
+
+  gap: 6px;
+
+  margin-top: 6px;
+}
+
+.album-actions button {
+  flex: 1;
+
+  height: 34px;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  padding: 0 10px;
+
+  color: #ffffff;
+}
+
+/* VIEW */
+.album-view-btn {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.album-view-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* EDIT */
+.album-edit-btn {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.album-edit-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* DELETE */
+.album-delete-btn {
+  flex: 0 0 34px;
+
+  background: rgba(220, 38, 38, 0.25);
+  color: #ffffff;
+
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+.album-delete-btn:hover {
+  background: rgba(220, 38, 38, 0.5);
+
+  border-color: rgba(220, 38, 38, 0.8);
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.albums-empty {
+  grid-column: 1 / -1;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--card-bg);
+  border: 1px dashed var(--border-color);
+  border-radius: 14px;
+  text-align: center;
+  color: var(--muted-text);
+}
+
+.albums-empty svg {
+  margin-bottom: 12px;
+  color: var(--muted-text);
+}
+
+.albums-empty h3 {
+  margin: 0 0 7px;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.albums-empty p {
+  margin: 0 0 18px;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.albums-empty button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background: var(--accent-color);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.albums-empty button:hover {
+  background: var(--accent-hover);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1200px) {
+  .albums-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .album-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================
+   TABLET SMALL
+========================================= */
+
+@media (max-width: 900px) {
+  .albums-page {
+    padding: 22px;
+  }
+
+  .albums-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .albums-filter-box {
+    flex-wrap: wrap;
+  }
+
+  .album-search {
+    flex: 1 1 100%;
+  }
+
+  .albums-filter-box select {
+    flex: 1;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .albums-page {
+    padding: 16px;
+  }
+
+  .albums-header {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+
+  .albums-header h1 {
+    font-size: 23px;
+  }
+
+  .add-album-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .album-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .albums-filter-box {
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .album-search {
+    width: auto;
+  }
+
+  .albums-filter-box select {
+    width: 100%;
+  }
+
+  .albums-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .album-card-bottom h3 {
+    font-size: 18px;
+  }
+
+  .album-actions button {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+}

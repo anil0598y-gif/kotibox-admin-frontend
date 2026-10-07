@@ -1,0 +1,1456 @@
+/* =========================================================
+   SUBSCRIPTION DETAILS
+========================================================= */
+
+.subscription-details-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  animation: detailsOverlayIn 0.22s ease;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.subscription-details-modal {
+  width: min(960px, 100%);
+  max-height: calc(100vh - 48px);
+
+  overflow-y: auto;
+
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 22px;
+
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+
+  box-shadow:
+    0 30px 80px rgba(15, 23, 42, 0.22),
+    0 8px 30px rgba(15, 23, 42, 0.10);
+
+  animation: detailsModalIn 0.28s ease;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+}
+
+.subscription-details-modal::-webkit-scrollbar {
+  width: 7px;
+}
+
+.subscription-details-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.subscription-details-modal::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: rgba(100, 116, 139, 0.35);
+}
+
+.subscription-details-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.55);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.subscription-details-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 20px 24px;
+
+  border-bottom: 1px solid
+    var(--border-color, #e2e8f0);
+
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+
+  backdrop-filter: blur(16px);
+}
+
+.subscription-details-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.subscription-details-icon {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  color: var(
+    --accent-color,
+    #7c3aed
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 12%,
+    transparent
+  );
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 18%,
+    transparent
+  );
+}
+
+.subscription-details-title h2 {
+  margin: 0;
+
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 750;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+}
+
+.subscription-details-title span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+}
+
+
+/* =========================================================
+   HEADER ACTIONS
+========================================================= */
+
+.subscription-details-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.details-edit-btn,
+.details-close-btn {
+  border: 0;
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.details-edit-btn {
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 0 14px;
+
+  border-radius: 10px;
+
+  color: var(
+    --accent-color,
+    #7c3aed
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 10%,
+    transparent
+  );
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.details-edit-btn:hover {
+  transform: translateY(-1px);
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 16%,
+    transparent
+  );
+
+  box-shadow: 0 6px 18px
+    color-mix(
+      in srgb,
+      var(--accent-color, #7c3aed) 15%,
+      transparent
+    );
+}
+
+.details-close-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  background: var(
+    --surface-bg,
+    #f8fafc
+  );
+}
+
+.details-close-btn:hover {
+  transform: rotate(4deg);
+
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.10);
+}
+
+
+/* =========================================================
+   USER PROFILE
+========================================================= */
+
+.subscription-user-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin: 20px 24px 0;
+  padding: 18px;
+
+  border: 1px solid
+    var(--border-color, #e2e8f0);
+
+  border-radius: 16px;
+
+  background: var(
+    --surface-bg,
+    #f8fafc
+  );
+}
+
+.details-user-avatar {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-color, #7c3aed),
+      color-mix(
+        in srgb,
+        var(--accent-color, #7c3aed) 62%,
+        #0ea5e9
+      )
+    );
+
+  font-size: 19px;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 22px
+    color-mix(
+      in srgb,
+      var(--accent-color, #7c3aed) 25%,
+      transparent
+    );
+}
+
+.details-user-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.details-user-info h3 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 750;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+}
+
+.details-user-email {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 5px;
+
+  min-width: 0;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 12px;
+}
+
+.details-user-email span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.details-current-status {
+  flex-shrink: 0;
+}
+
+.details-status {
+  min-height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 0 11px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 750;
+
+  border: 1px solid transparent;
+}
+
+.details-status.active {
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.10);
+  border-color: rgba(34, 197, 94, 0.18);
+}
+
+.details-status.expired {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.11);
+  border-color: rgba(245, 158, 11, 0.20);
+}
+
+.details-status.cancelled {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.10);
+  border-color: rgba(239, 68, 68, 0.18);
+}
+
+.details-status.pending {
+  color: #2563eb;
+  background: rgba(59, 130, 246, 0.10);
+  border-color: rgba(59, 130, 246, 0.18);
+}
+
+
+/* =========================================================
+   PLAN SUMMARY
+========================================================= */
+
+.subscription-plan-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin: 16px 24px 0;
+  padding: 20px;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(
+        in srgb,
+        var(--accent-color, #7c3aed) 10%,
+        var(--card-bg, #ffffff)
+      ),
+      color-mix(
+        in srgb,
+        var(--accent-color, #7c3aed) 4%,
+        var(--card-bg, #ffffff)
+      )
+    );
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 16%,
+    var(--border-color, #e2e8f0)
+  );
+}
+
+.plan-summary-main {
+  min-width: 0;
+}
+
+.plan-summary-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 11px;
+  font-weight: 650;
+
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.plan-summary-main h3 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+}
+
+.plan-summary-cycle {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+}
+
+.plan-summary-price {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.plan-summary-price span {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.plan-summary-price strong {
+  color: var(
+    --accent-color,
+    #7c3aed
+  );
+
+  font-size: 25px;
+  font-weight: 850;
+}
+
+.plan-summary-price small {
+  margin-left: 3px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   INFORMATION GRID
+========================================================= */
+
+.subscription-details-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin: 16px 24px 0;
+}
+
+.details-info-card {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  padding: 15px;
+
+  border: 1px solid
+    var(--border-color, #e2e8f0);
+
+  border-radius: 14px;
+
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.details-info-card:hover {
+  transform: translateY(-2px);
+
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 25%,
+    var(--border-color, #e2e8f0)
+  );
+
+  box-shadow: 0 8px 24px
+    rgba(15, 23, 42, 0.07);
+}
+
+.details-info-icon {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color: var(
+    --accent-color,
+    #7c3aed
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 10%,
+    transparent
+  );
+}
+
+.details-info-card > div:last-child {
+  min-width: 0;
+}
+
+.details-info-card span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 10px;
+  font-weight: 650;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.details-info-card strong {
+  display: block;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.subscription-details-section {
+  margin: 16px 24px 0;
+  padding: 18px;
+
+  border: 1px solid
+    var(--border-color, #e2e8f0);
+
+  border-radius: 16px;
+
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+}
+
+.details-section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 16px;
+}
+
+.details-section-title > div {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  color: var(
+    --accent-color,
+    #7c3aed
+  );
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #7c3aed) 10%,
+    transparent
+  );
+}
+
+.details-section-title h3 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 750;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+}
+
+
+/* =========================================================
+   PAYMENT DETAILS
+========================================================= */
+
+.details-payment-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.details-payment-item {
+  min-width: 0;
+}
+
+.details-payment-item > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.details-payment-item > strong {
+  display: block;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.details-payment {
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+}
+
+.details-payment.paid {
+  color: #16a34a !important;
+}
+
+.details-payment.pending {
+  color: #d97706 !important;
+}
+
+.details-payment.failed {
+  color: #dc2626 !important;
+}
+
+.details-payment.refunded {
+  color: #7c3aed !important;
+}
+
+.transaction-id {
+  color: var(
+    --accent-color,
+    #7c3aed
+  ) !important;
+
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+
+  font-size: 11px !important;
+}
+
+
+/* =========================================================
+   RENEWAL INFORMATION
+========================================================= */
+
+.renewal-details-row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.renewal-detail {
+  min-width: 0;
+
+  padding: 13px 14px;
+
+  border-radius: 11px;
+
+  background: var(
+    --surface-bg,
+    #f8fafc
+  );
+
+  border: 1px solid
+    var(--border-color, #e2e8f0);
+}
+
+.renewal-detail > span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 10px;
+  font-weight: 650;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.renewal-detail > strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.renewal-on {
+  color: #16a34a !important;
+}
+
+.renewal-off {
+  color: #dc2626 !important;
+}
+
+.renewal-status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: currentColor;
+
+  box-shadow: 0 0 0 3px
+    color-mix(
+      in srgb,
+      currentColor 12%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.subscription-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px 20px;
+
+  margin: 16px 24px 0;
+  padding: 13px 15px;
+
+  border-top: 1px dashed
+    var(--border-color, #e2e8f0);
+  border-bottom: 1px dashed
+    var(--border-color, #e2e8f0);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  min-width: 0;
+
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  font-size: 10px;
+}
+
+.meta-item svg {
+  flex-shrink: 0;
+
+  color: var(
+    --accent-color,
+    #7c3aed
+  );
+}
+
+.meta-item strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.subscription-details-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 18px;
+  padding: 16px 24px;
+
+  border-top: 1px solid
+    var(--border-color, #e2e8f0);
+
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+}
+
+.details-footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.subscription-details-footer button {
+  min-height: 37px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 0 13px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.subscription-details-footer button:hover {
+  transform: translateY(-1px);
+}
+
+.subscription-details-footer button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.details-footer-close {
+  color: var(
+    --text-secondary,
+    #64748b
+  );
+
+  background: var(
+    --surface-bg,
+    #f8fafc
+  );
+
+  border: 1px solid
+    var(--border-color, #e2e8f0);
+}
+
+.details-footer-close:hover {
+  color: var(
+    --text-primary,
+    #0f172a
+  );
+
+  background: var(
+    --hover-bg,
+    #f1f5f9
+  );
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
+
+.details-footer-cancel {
+  color: #dc2626;
+
+  background: rgba(239, 68, 68, 0.08);
+
+  border: 1px solid rgba(239, 68, 68, 0.18);
+}
+
+.details-footer-cancel:hover {
+  background: rgba(239, 68, 68, 0.13);
+
+  box-shadow: 0 6px 18px
+    rgba(239, 68, 68, 0.12);
+}
+
+
+/* =========================================================
+   RENEW BUTTON
+========================================================= */
+
+.details-footer-renew {
+  color: #15803d;
+
+  background: rgba(34, 197, 94, 0.09);
+
+  border: 1px solid rgba(34, 197, 94, 0.18);
+}
+
+.details-footer-renew:hover {
+  background: rgba(34, 197, 94, 0.14);
+
+  box-shadow: 0 6px 18px
+    rgba(34, 197, 94, 0.12);
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.details-footer-delete {
+  color: #dc2626;
+
+  background: transparent;
+
+  border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+.details-footer-delete:hover {
+  background: rgba(239, 68, 68, 0.08);
+
+  box-shadow: 0 6px 18px
+    rgba(239, 68, 68, 0.10);
+}
+
+
+/* =========================================================
+   EDIT BUTTON
+========================================================= */
+
+.details-footer-edit {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-color, #7c3aed),
+      color-mix(
+        in srgb,
+        var(--accent-color, #7c3aed) 72%,
+        #0ea5e9
+      )
+    );
+
+  border: 1px solid transparent;
+
+  box-shadow:
+    0 6px 16px
+    color-mix(
+      in srgb,
+      var(--accent-color, #7c3aed) 22%,
+      transparent
+    );
+}
+
+.details-footer-edit:hover {
+  box-shadow:
+    0 9px 23px
+    color-mix(
+      in srgb,
+      var(--accent-color, #7c3aed) 30%,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   DARK THEME SUPPORT
+========================================================= */
+
+html[data-theme="dark"] .subscription-details-overlay {
+  background: rgba(2, 6, 23, 0.72);
+}
+
+html[data-theme="dark"] .subscription-details-modal {
+  border-color: rgba(148, 163, 184, 0.14);
+
+  background: var(
+    --card-bg,
+    #111827
+  );
+
+  box-shadow:
+    0 35px 90px rgba(0, 0, 0, 0.48),
+    0 8px 30px rgba(0, 0, 0, 0.30);
+}
+
+html[data-theme="dark"] .subscription-details-header,
+html[data-theme="dark"] .subscription-details-footer {
+  background: var(
+    --card-bg,
+    #111827
+  );
+}
+
+html[data-theme="dark"] .subscription-user-profile,
+html[data-theme="dark"] .renewal-detail {
+  background: var(
+    --surface-bg,
+    #172033
+  );
+}
+
+html[data-theme="dark"] .details-info-card,
+html[data-theme="dark"] .subscription-details-section {
+  background: var(
+    --card-bg,
+    #111827
+  );
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes detailsOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes detailsModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+  .subscription-details-overlay {
+    padding: 16px;
+  }
+
+  .subscription-details-modal {
+    max-height: calc(100vh - 32px);
+  }
+
+  .subscription-details-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .details-payment-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .renewal-details-row {
+    grid-template-columns:
+      1fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .subscription-details-overlay {
+    align-items: flex-end;
+
+    padding: 0;
+  }
+
+  .subscription-details-modal {
+    width: 100%;
+    max-height: 94vh;
+
+    border-radius:
+      22px 22px 0 0;
+  }
+
+  .subscription-details-header {
+    padding: 16px;
+  }
+
+  .subscription-details-title h2 {
+    font-size: 16px;
+  }
+
+  .subscription-details-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .details-edit-btn {
+    padding: 0 11px;
+  }
+
+  .subscription-user-profile {
+    margin: 14px 16px 0;
+
+    padding: 14px;
+  }
+
+  .details-user-avatar {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+  }
+
+  .details-current-status {
+    align-self: flex-start;
+  }
+
+  .details-status {
+    padding: 0 9px;
+  }
+
+  .subscription-plan-summary {
+    margin: 12px 16px 0;
+
+    padding: 16px;
+  }
+
+  .plan-summary-main h3 {
+    font-size: 19px;
+  }
+
+  .plan-summary-price strong {
+    font-size: 21px;
+  }
+
+  .subscription-details-grid {
+    grid-template-columns: 1fr;
+
+    margin: 12px 16px 0;
+  }
+
+  .details-info-card {
+    padding: 13px;
+  }
+
+  .subscription-details-section {
+    margin: 12px 16px 0;
+
+    padding: 15px;
+  }
+
+  .details-payment-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px 10px;
+  }
+
+  .subscription-meta {
+    margin: 14px 16px 0;
+
+    gap: 9px 15px;
+  }
+
+  .subscription-details-footer {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    padding: 14px 16px;
+  }
+
+  .details-footer-close {
+    width: 100%;
+  }
+
+  .details-footer-actions {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .details-footer-actions button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .subscription-details-header-actions {
+    gap: 5px;
+  }
+
+  .details-edit-btn {
+    width: 38px;
+    padding: 0;
+
+    font-size: 0;
+  }
+
+  .subscription-user-profile {
+    flex-wrap: wrap;
+  }
+
+  .details-current-status {
+    width: 100%;
+    padding-left: 58px;
+  }
+
+  .details-payment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details-footer-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.subscription-details-footer button:focus-visible,
+.details-edit-btn:focus-visible,
+.details-close-btn:focus-visible {
+  outline: 3px solid
+    color-mix(
+      in srgb,
+      var(--accent-color, #7c3aed) 25%,
+      transparent
+    );
+
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .subscription-details-overlay,
+  .subscription-details-modal {
+    animation: none;
+  }
+
+  .details-info-card,
+  .subscription-details-footer button,
+  .details-edit-btn,
+  .details-close-btn {
+    transition: none;
+  }
+}

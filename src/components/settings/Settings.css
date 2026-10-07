@@ -1,0 +1,338 @@
+.settings-page {
+  min-height: 100vh;
+
+  padding: 30px;
+
+  background: var(--app-bg);
+  color: var(--text-color);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.settings-page-header {
+  margin-bottom: 25px;
+}
+
+.settings-page-header h1 {
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  color: var(--text-color);
+}
+
+.settings-page-header p {
+  margin: 7px 0 0;
+
+  color: var(--muted-text);
+
+  font-size: 14px;
+}
+
+/* =========================================
+   LAYOUT
+========================================= */
+
+.settings-layout {
+  display: grid;
+
+  grid-template-columns: 280px 1fr;
+
+  gap: 24px;
+
+  align-items: start;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.settings-sidebar {
+  background: var(--card-bg);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.settings-sidebar-title {
+  padding: 20px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--text-color);
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.settings-menu {
+  padding: 10px;
+}
+
+/* =========================================
+   MENU ITEM
+========================================= */
+
+.settings-menu-item {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--text-color);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 13px 12px;
+
+  margin-bottom: 4px;
+
+  border-radius: 9px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.settings-menu-item:hover {
+  background: var(--hover-bg);
+
+  color: var(--accent-color);
+}
+
+.settings-menu-item.active {
+  background: var(--accent-color);
+
+  color: #ffffff;
+
+  box-shadow: 0 4px 12px var(--accent-shadow);
+}
+
+/* =========================================
+   ICON
+========================================= */
+
+.settings-menu-icon {
+  width: 36px;
+
+  height: 36px;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: var(--accent-light);
+
+  color: var(--accent-color);
+
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.settings-menu-item.active .settings-menu-icon {
+  background: #ffffff;
+
+  color: var(--accent-color);
+}
+
+.settings-menu-icon svg {
+  font-size: 17px;
+}
+
+/* =========================================
+   TEXT
+========================================= */
+
+.settings-menu-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.settings-menu-text span {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: inherit;
+}
+
+.settings-menu-text small {
+  font-size: 11px;
+
+  color: var(--muted-text);
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.settings-menu-item.active .settings-menu-text small {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.settings-content {
+  min-width: 0;
+
+  color: var(--text-color);
+}
+
+/* =========================================
+   COMING SOON
+========================================= */
+
+.settings-coming-soon {
+  min-height: 400px;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 30px;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.settings-coming-soon > svg {
+  font-size: 45px;
+
+  color: var(--accent-color);
+
+  margin-bottom: 15px;
+}
+
+.settings-coming-soon h2 {
+  margin: 0;
+
+  font-size: 20px;
+
+  color: var(--text-color);
+}
+
+.settings-coming-soon p {
+  margin: 8px 0 0;
+
+  color: var(--muted-text);
+
+  font-size: 14px;
+}
+
+/* =========================================
+   FOCUS
+========================================= */
+
+.settings-page button:focus-visible {
+  outline: 3px solid var(--accent-shadow);
+
+  outline-offset: 2px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .settings-layout {
+    grid-template-columns: 230px 1fr;
+  }
+
+  .settings-menu-text small {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 20px;
+  }
+
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-sidebar {
+    width: 100%;
+  }
+
+  .settings-menu {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 5px;
+  }
+
+  .settings-menu-item {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .settings-page {
+    padding: 15px;
+  }
+
+  .settings-page-header h1 {
+    font-size: 23px;
+  }
+
+  .settings-menu {
+    grid-template-columns: 1fr;
+  }
+}

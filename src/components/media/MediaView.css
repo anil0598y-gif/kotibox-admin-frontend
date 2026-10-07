@@ -1,0 +1,440 @@
+/* ================================
+   MEDIA VIEW CONTAINER
+================================ */
+
+.media-view-container {
+  width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: var(--app-bg);
+  color: var(--text-color);
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.media-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+/* ================================
+   BACK BUTTON
+================================ */
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-color);
+  padding: 9px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--accent-border);
+  color: var(--accent-color);
+}
+
+/* ================================
+   ACTION BUTTONS
+================================ */
+
+.media-view-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.media-view-actions button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* ================================
+   EDIT BUTTON - SPECIAL
+================================ */
+
+.media-view-actions .edit-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.media-view-actions .edit-btn:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--accent-shadow);
+}
+
+.media-view-actions .edit-btn:active {
+  transform: scale(0.94);
+}
+
+/* ================================
+   DELETE BUTTON - SPECIAL
+================================ */
+
+.media-view-actions .delete-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fff5f5;
+  color: #dc2626;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.media-view-actions .delete-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.15);
+}
+
+.media-view-actions .delete-btn:active {
+  transform: scale(0.94);
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.media-view-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: stretch;
+}
+
+/* ================================
+   PREVIEW
+================================ */
+
+.media-view-preview {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+/* ================================
+   IMAGE
+================================ */
+
+.view-media-image {
+  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+/* ================================
+   AUDIO
+================================ */
+
+.view-audio-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.view-audio-icon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent-color);
+  font-size: 42px;
+}
+
+.view-audio-player {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ================================
+   VIDEO
+================================ */
+
+.view-media-video {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* ================================
+   PLACEHOLDER
+================================ */
+
+.view-placeholder {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--accent-light);
+  color: var(--muted-text);
+  font-size: 18px;
+}
+
+/* ================================
+   MEDIA INFORMATION
+================================ */
+
+.media-view-info {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.media-view-info h2 {
+  margin: 0 0 25px;
+  color: var(--text-color);
+  font-size: 22px;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+/* ================================
+   INFO GRID
+================================ */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.info-label {
+  color: var(--muted-text);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-value {
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.file-name {
+  word-break: break-all;
+}
+
+/* ================================
+   STATUS
+================================ */
+
+.status-badge {
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-badge.active {
+  background: #e8f7ed;
+  color: #21863a;
+}
+
+.status-badge.inactive {
+  background: #fbecec;
+  color: #c62828;
+}
+
+/* ================================
+   EMPTY STATE
+================================ */
+
+.empty-state {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.empty-state svg {
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  margin: 0 0 15px;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.empty-state button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--accent-color);
+  background: var(--accent-color);
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.empty-state button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+/* ================================
+   FOCUS
+================================ */
+
+.media-view-container button:focus-visible {
+  outline: 3px solid var(--accent-shadow);
+  outline-offset: 2px;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+  .media-view-content {
+    grid-template-columns: 1fr;
+  }
+
+  .media-view-preview {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 700px) {
+  .media-view-container {
+    padding: 20px;
+  }
+
+  .media-view-header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .media-view-actions {
+    gap: 7px;
+  }
+
+  .media-view-actions .edit-btn,
+  .media-view-actions .delete-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .media-view-preview {
+    min-height: 300px;
+    padding: 18px;
+  }
+
+  .media-view-info {
+    padding: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .media-view-container {
+    padding: 15px;
+  }
+
+  .media-view-header {
+    flex-direction: column;
+  }
+
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .media-view-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .media-view-info h2 {
+    font-size: 19px;
+  }
+}

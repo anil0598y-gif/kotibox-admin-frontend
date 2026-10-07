@@ -1,0 +1,781 @@
+/* =========================================
+   SUBSCRIPTION FORM PAGE
+========================================= */
+
+.subscription-form-page {
+  width: 100%;
+  padding: 28px;
+  box-sizing: border-box;
+
+  color: var(--text-primary, #ffffff);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.subscription-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+.subscription-form-title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+}
+
+.subscription-form-main-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #1db954) 10%,
+    transparent
+  );
+
+  color: var(--accent-color, #1db954);
+}
+
+.subscription-form-header h1 {
+  margin: 0;
+
+  color: var(--text-primary, #ffffff);
+
+  font-size: 25px;
+  font-weight: 750;
+
+  letter-spacing: -0.4px;
+}
+
+.subscription-form-header p {
+  margin: 5px 0 0;
+
+  color: var(--text-muted, #888891);
+
+  font-size: 13px;
+}
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.subscription-form-close {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--border-color, #2d2d2d);
+
+  border-radius: 9px;
+
+  background: var(--card-bg, #181818);
+
+  color: var(--text-secondary, #9999a1);
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.subscription-form-close:hover {
+  color: var(--text-primary, #ffffff);
+
+  background: var(
+    --hover-bg,
+    rgba(255, 255, 255, 0.07)
+  );
+
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color, #1db954) 30%,
+    var(--border-color, #414141)
+  );
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.subscription-form {
+  width: 100%;
+}
+
+.subscription-form-section {
+  margin-bottom: 18px;
+
+  padding: 22px;
+
+  background: var(--card-bg, #181818);
+
+  border: 1px solid var(--border-color, #292929);
+
+  border-radius: 12px;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.subscription-section-heading {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 22px;
+}
+
+.section-heading-icon {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 35px;
+
+  border-radius: 8px;
+
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #1db954) 9%,
+    transparent
+  );
+
+  color: var(--accent-color, #1db954);
+}
+
+.subscription-section-heading h2 {
+  margin: 0;
+
+  color: var(--text-primary, #eeeeee);
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.subscription-section-heading p {
+  margin: 4px 0 0;
+
+  color: var(--text-muted, #777780);
+
+  font-size: 11px;
+}
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.subscription-form-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.subscription-form-group {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.subscription-form-group label {
+  margin-bottom: 7px;
+
+  color: var(--text-secondary, #bcbcc3);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.subscription-form-group label span {
+  color: var(--danger-color, #ed6872);
+}
+
+/* =========================================
+   INPUT / SELECT
+========================================= */
+
+.subscription-form-group input,
+.subscription-form-group select {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(
+    --input-border-color,
+    var(--border-color, #303030)
+  );
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: var(
+    --input-bg,
+    #111111
+  );
+
+  color: var(--text-primary, #eeeeee);
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.subscription-form-group input:focus,
+.subscription-form-group select:focus {
+  border-color: var(--accent-color, #1db954);
+
+  background: var(
+    --input-focus-bg,
+    #151515
+  );
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--accent-color, #1db954) 10%,
+      transparent
+    );
+}
+
+.subscription-form-group input::placeholder {
+  color: var(--text-muted, #65656d);
+}
+
+.subscription-form-group input:disabled {
+  color: var(--text-muted, #777780);
+
+  background: var(
+    --input-disabled-bg,
+    #0d0d0d
+  );
+
+  cursor: not-allowed;
+}
+
+.subscription-form-group select {
+  cursor: pointer;
+}
+
+.subscription-form-group select option {
+  background: var(--card-bg, #181818);
+
+  color: var(--text-primary, #ffffff);
+}
+
+.subscription-form-group input[type="date"] {
+  color-scheme: dark;
+}
+
+/* =========================================
+   INPUT WITH ICON
+========================================= */
+
+.form-input-with-icon {
+  position: relative;
+
+  width: 100%;
+}
+
+.form-input-with-icon svg {
+  position: absolute;
+
+  left: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: var(--text-muted, #777780);
+
+  pointer-events: none;
+
+  transition: color 0.2s ease;
+}
+
+.form-input-with-icon:focus-within svg {
+  color: var(--accent-color, #1db954);
+}
+
+.form-input-with-icon input {
+  padding-left: 37px;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.form-error-input {
+  border-color: var(
+    --danger-color,
+    #e95f69
+  ) !important;
+}
+
+.form-error {
+  margin-top: 5px;
+
+  color: var(
+    --danger-color,
+    #ed6872
+  );
+
+  font-size: 10px;
+}
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+.subscription-toggle {
+  min-height: 42px;
+
+  display: flex !important;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0 !important;
+
+  cursor: pointer;
+}
+
+.subscription-toggle input {
+  position: absolute;
+
+  width: 1px !important;
+  height: 1px !important;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.toggle-slider {
+  position: relative;
+
+  width: 42px;
+  height: 23px;
+
+  flex: 0 0 42px;
+
+  border-radius: 30px;
+
+  background: var(
+    --toggle-off-bg,
+    #333333
+  );
+
+  transition: background 0.2s ease;
+}
+
+.toggle-slider::after {
+  content: "";
+
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: var(
+    --toggle-knob,
+    #aaaaaa
+  );
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.subscription-toggle input:checked + .toggle-slider {
+  background: var(--accent-color, #1db954);
+}
+
+.subscription-toggle input:checked + .toggle-slider::after {
+  transform: translateX(19px);
+
+  background: #ffffff;
+}
+
+.toggle-text {
+  margin: 0 !important;
+
+  color: var(--text-secondary, #a4a4ab) !important;
+
+  font-size: 11px !important;
+  font-weight: 650 !important;
+}
+
+/* =========================================
+   FORM ACTIONS
+========================================= */
+
+.subscription-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding: 18px 0 5px;
+}
+
+.subscription-cancel-btn,
+.subscription-save-btn {
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 17px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Cancel */
+
+.subscription-cancel-btn {
+  border: 1px solid var(
+    --border-color,
+    #333333
+  );
+
+  background: transparent;
+
+  color: var(
+    --text-secondary,
+    #b0b0b7
+  );
+}
+
+.subscription-cancel-btn:hover {
+  background: var(
+    --hover-bg,
+    rgba(255, 255, 255, 0.05)
+  );
+
+  color: var(
+    --text-primary,
+    #ffffff
+  );
+
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color, #1db954) 30%,
+    var(--border-color, #333333)
+  );
+}
+
+/* Save */
+
+.subscription-save-btn {
+  border: 1px solid transparent;
+
+  background: var(
+    --accent-color,
+    #1db954
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 6px 18px
+    color-mix(
+      in srgb,
+      var(--accent-color, #1db954) 18%,
+      transparent
+    );
+}
+
+.subscription-save-btn:hover {
+  transform: translateY(-1px);
+
+  filter: brightness(1.08);
+
+  box-shadow:
+    0 8px 22px
+    color-mix(
+      in srgb,
+      var(--accent-color, #1db954) 24%,
+      transparent
+    );
+}
+
+/* =========================================
+   LIGHT THEME
+========================================= */
+
+html[data-theme="light"] .subscription-form-section {
+  background: var(--card-bg, #ffffff);
+
+  border-color: var(
+    --border-color,
+    #e5e5e5
+  );
+}
+
+html[data-theme="light"] .subscription-form-main-icon,
+html[data-theme="light"] .section-heading-icon {
+  background: color-mix(
+    in srgb,
+    var(--accent-color, #1db954) 9%,
+    #f4f4f4
+  );
+}
+
+html[data-theme="light"] .subscription-form-header h1,
+html[data-theme="light"] .subscription-section-heading h2 {
+  color: var(
+    --text-primary,
+    #171717
+  );
+}
+
+html[data-theme="light"] .subscription-form-header p,
+html[data-theme="light"] .subscription-section-heading p {
+  color: var(
+    --text-secondary,
+    #777780
+  );
+}
+
+html[data-theme="light"] .subscription-form-group label {
+  color: var(
+    --text-secondary,
+    #55555c
+  );
+}
+
+html[data-theme="light"] .subscription-form-group input,
+html[data-theme="light"] .subscription-form-group select {
+  background: var(
+    --input-bg,
+    #fafafa
+  );
+
+  color: var(
+    --text-primary,
+    #171717
+  );
+
+  border-color: var(
+    --border-color,
+    #dddddd
+  );
+}
+
+html[data-theme="light"]
+  .subscription-form-group
+  input:focus,
+html[data-theme="light"]
+  .subscription-form-group
+  select:focus {
+  background: #ffffff;
+}
+
+html[data-theme="light"]
+  .subscription-form-group
+  input:disabled {
+  background: #f1f1f1;
+
+  color: #888888;
+}
+
+html[data-theme="light"]
+  .subscription-form-group
+  select
+  option {
+  background: #ffffff;
+
+  color: #171717;
+}
+
+html[data-theme="light"] .subscription-form-group input[type="date"] {
+  color-scheme: light;
+}
+
+html[data-theme="light"] .subscription-form-close {
+  background: var(
+    --card-bg,
+    #ffffff
+  );
+
+  border-color: var(
+    --border-color,
+    #dddddd
+  );
+
+  color: var(
+    --text-secondary,
+    #777777
+  );
+}
+
+html[data-theme="light"] .subscription-form-close:hover {
+  background: var(
+    --hover-bg,
+    #f5f5f5
+  );
+
+  color: var(
+    --text-primary,
+    #222222
+  );
+}
+
+html[data-theme="light"] .subscription-cancel-btn {
+  border-color: var(
+    --border-color,
+    #dddddd
+  );
+
+  color: var(
+    --text-secondary,
+    #555555
+  );
+}
+
+html[data-theme="light"] .subscription-cancel-btn:hover {
+  background: var(
+    --hover-bg,
+    #f5f5f5
+  );
+
+  color: var(
+    --text-primary,
+    #222222
+  );
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+  .subscription-form-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .subscription-form-page {
+    padding: 18px;
+  }
+
+  .subscription-form-section {
+    padding: 17px;
+  }
+
+  .subscription-form-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .subscription-form-header h1 {
+    font-size: 21px;
+  }
+
+  .subscription-form-header p {
+    font-size: 11px;
+  }
+
+  .subscription-form-actions {
+    width: 100%;
+  }
+
+  .subscription-cancel-btn,
+  .subscription-save-btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 460px) {
+  .subscription-form-page {
+    padding: 13px;
+  }
+
+  .subscription-form-title-row {
+    gap: 9px;
+  }
+
+  .subscription-form-main-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .subscription-form-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .subscription-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .subscription-cancel-btn,
+  .subscription-save-btn {
+    width: 100%;
+
+    flex: none;
+  }
+}

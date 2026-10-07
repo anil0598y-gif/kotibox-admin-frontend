@@ -1,0 +1,862 @@
+/* =========================================
+   EDIT ARTIST PAGE
+========================================= */
+
+.edit-artist-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+  background: var(--app-bg);
+  color: var(--text-color);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.edit-artist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.edit-artist-header > div {
+  min-width: 0;
+}
+
+.edit-artist-header h1 {
+  margin: 0 0 6px;
+  color: var(--text-color);
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.edit-artist-header p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   HEADER CANCEL BUTTON
+========================================= */
+
+.edit-artist-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 40px;
+  padding: 9px 16px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background: var(--card-bg);
+  color: var(--text-color);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-artist-close-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--accent-border);
+  color: var(--accent-color);
+}
+
+.edit-artist-close-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.edit-artist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.edit-artist-card {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.edit-artist-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 22px;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.edit-artist-card-header h2 {
+  margin: 0 0 5px;
+
+  color: var(--text-color);
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.edit-artist-card-header p {
+  margin: 0;
+
+  color: var(--muted-text);
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   IMAGE SECTION
+========================================= */
+
+.edit-artist-image-section {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  padding: 24px 22px;
+}
+
+
+/* =========================================
+   IMAGE PREVIEW
+========================================= */
+
+.edit-artist-image-preview {
+  width: 150px;
+  height: 150px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+
+  background: var(--hover-bg);
+
+  box-shadow: 0 4px 14px var(--card-shadow);
+}
+
+.edit-artist-image-preview img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================
+   IMAGE PLACEHOLDER
+========================================= */
+
+.edit-artist-image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background: var(--accent-light);
+  color: var(--accent-color);
+}
+
+.edit-artist-image-placeholder span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   IMAGE ACTIONS
+========================================= */
+
+.edit-artist-image-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  min-width: 0;
+}
+
+
+/* =========================================
+   UPLOAD IMAGE BUTTON
+========================================= */
+
+.edit-artist-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 9px 15px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background: var(--card-bg);
+  color: var(--text-color);
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.edit-artist-upload-btn:hover {
+  background: var(--accent-light);
+  border-color: var(--accent-border);
+  color: var(--accent-color);
+}
+
+.edit-artist-upload-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   REMOVE IMAGE BUTTON
+========================================= */
+
+.edit-artist-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 9px 15px;
+
+  border: 1px solid #dc2626;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #dc2626;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.edit-artist-remove-btn:hover {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: #b91c1c;
+  color: #b91c1c;
+}
+
+.edit-artist-remove-btn:active {
+  transform: scale(0.98);
+}
+
+.edit-artist-remove-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* =========================================
+   REMOVE IMAGE NOTE
+========================================= */
+
+.edit-artist-remove-note {
+  margin: 2px 0 0;
+
+  color: #dc2626;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   BASIC INFORMATION GRID
+========================================= */
+
+.edit-artist-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+
+  padding: 22px;
+}
+
+
+/* =========================================
+   FIELD
+========================================= */
+
+.edit-artist-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  min-width: 0;
+}
+
+.edit-artist-field label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--text-color);
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.edit-artist-field label span {
+  color: #dc2626;
+}
+
+
+/* =========================================
+   INPUT ICON WRAPPER
+========================================= */
+
+.edit-artist-input-icon {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+}
+
+.edit-artist-input-icon > svg {
+  position: absolute;
+  left: 12px;
+
+  flex-shrink: 0;
+
+  color: var(--muted-text);
+
+  pointer-events: none;
+}
+
+.edit-artist-input-icon input {
+  padding-left: 40px;
+}
+
+
+/* =========================================
+   INPUT / SELECT / TEXTAREA
+========================================= */
+
+.edit-artist-field input,
+.edit-artist-field select,
+.edit-artist-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  outline: none;
+
+  background: var(--input-bg);
+  color: var(--text-color);
+
+  font-family: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.edit-artist-field input,
+.edit-artist-field select {
+  height: 42px;
+  padding: 10px 12px;
+}
+
+.edit-artist-field textarea {
+  min-height: 125px;
+
+  padding: 12px;
+
+  resize: vertical;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.edit-artist-field input:focus,
+.edit-artist-field select:focus,
+.edit-artist-field textarea:focus {
+  border-color: var(--accent-color);
+
+  box-shadow:
+    0 0 0 3px var(--accent-shadow);
+}
+
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.edit-artist-field input::placeholder,
+.edit-artist-field textarea::placeholder {
+  color: var(--muted-text);
+  opacity: 0.8;
+}
+
+
+/* =========================================
+   DISABLED
+========================================= */
+
+.edit-artist-field input:disabled,
+.edit-artist-field select:disabled,
+.edit-artist-field textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   FULL BIO FIELD
+========================================= */
+
+.edit-artist-full-field {
+  padding: 0 22px 22px;
+}
+
+
+/* =========================================
+   SOCIAL LINKS
+========================================= */
+
+.edit-artist-social-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  padding: 22px;
+}
+
+
+/* =========================================
+   SOCIAL LABEL ICONS
+========================================= */
+
+.edit-artist-field label svg {
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.edit-artist-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding-bottom: 20px;
+}
+
+
+/* =========================================
+   CANCEL BUTTON
+========================================= */
+
+.edit-artist-cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 10px 20px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background: var(--card-bg);
+  color: var(--text-color);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.edit-artist-cancel-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--accent-border);
+}
+
+.edit-artist-cancel-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   SAVE BUTTON
+========================================= */
+
+.edit-artist-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 10px 20px;
+
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+
+  background: var(--accent-color);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.edit-artist-save-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.edit-artist-save-btn:active {
+  transform: scale(0.98);
+}
+
+.edit-artist-save-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   LOADER / SPINNER
+========================================= */
+
+.edit-artist-spinner {
+  animation: editArtistSpin 1s linear infinite;
+}
+
+@keyframes editArtistSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   EMPTY / NO ARTIST
+========================================= */
+
+.edit-artist-empty {
+  min-height: 450px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  text-align: center;
+
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+}
+
+.edit-artist-empty > svg {
+  margin-bottom: 15px;
+
+  color: var(--accent-color);
+}
+
+.edit-artist-empty h2 {
+  margin: 0 0 8px;
+
+  color: var(--text-color);
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.edit-artist-empty p {
+  margin: 0 0 20px;
+
+  color: var(--muted-text);
+
+  font-size: 14px;
+}
+
+.edit-artist-empty button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+
+  padding: 9px 17px;
+
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+
+  background: var(--accent-color);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.edit-artist-empty button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+
+/* =========================================
+   FOCUS VISIBLE
+========================================= */
+
+.edit-artist-page button:focus-visible,
+.edit-artist-page input:focus-visible,
+.edit-artist-page select:focus-visible,
+.edit-artist-page textarea:focus-visible {
+  outline: 3px solid var(--accent-shadow);
+  outline-offset: 2px;
+}
+
+
+/* =========================================
+   RESPONSIVE - 1000px
+========================================= */
+
+@media (max-width: 1000px) {
+  .edit-artist-social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - 800px
+========================================= */
+
+@media (max-width: 800px) {
+  .edit-artist-page {
+    padding: 22px;
+  }
+
+  .edit-artist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-artist-social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-artist-image-section {
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - 600px
+========================================= */
+
+@media (max-width: 600px) {
+  .edit-artist-page {
+    padding: 16px;
+  }
+
+  .edit-artist-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .edit-artist-header h1 {
+    font-size: 23px;
+  }
+
+  .edit-artist-close-btn {
+    width: 100%;
+  }
+
+  .edit-artist-card-header {
+    padding: 17px;
+  }
+
+  .edit-artist-grid {
+    padding: 17px;
+    gap: 16px;
+  }
+
+  .edit-artist-full-field {
+    padding: 0 17px 17px;
+  }
+
+  .edit-artist-social-grid {
+    padding: 17px;
+    gap: 16px;
+  }
+
+  .edit-artist-image-section {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 17px;
+  }
+
+  .edit-artist-image-actions {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .edit-artist-upload-btn,
+  .edit-artist-remove-btn {
+    width: 100%;
+  }
+
+  .edit-artist-actions {
+    width: 100%;
+    padding-bottom: 10px;
+  }
+
+  .edit-artist-cancel-btn,
+  .edit-artist-save-btn {
+    flex: 1;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .edit-artist-page {
+    padding: 12px;
+  }
+
+  .edit-artist-header h1 {
+    font-size: 21px;
+  }
+
+  .edit-artist-card-header h2 {
+    font-size: 16px;
+  }
+
+  .edit-artist-actions {
+    flex-direction: column;
+  }
+
+  .edit-artist-cancel-btn,
+  .edit-artist-save-btn {
+    width: 100%;
+    flex: none;
+  }
+
+  .edit-artist-image-preview {
+    width: 130px;
+    height: 130px;
+  }
+}
