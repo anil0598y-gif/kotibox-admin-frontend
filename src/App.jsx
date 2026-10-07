@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AdminProfile from "./components/adminprofile/AdminProfile";
 import SongLibrary from "./components/SongLibrary/SongLibrary";
-import AddSong from "./components/addsong/AddSong"; 
+import AddSong from "./components/AddSong/AddSong"; 
 import EditSong from "./components/EditSong/EditSong";
 import Playlist from "./components/playlist/Playlist";
 import PlaylistView from "./components/playlist/PlaylistView";
