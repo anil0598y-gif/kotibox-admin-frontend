@@ -1,64 +1,43 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-} from "react";
-
 import Login from "./components/auth/Login";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AdminProfile from "./components/adminprofile/AdminProfile";
-
 import SongLibrary from "./components/SongLibrary/SongLibrary";
-import AddSong from "./components/addsong/AddSong";
+import AddSong from "./components/addsong/AddSong"; 
 import EditSong from "./components/EditSong/EditSong";
-
 import Playlist from "./components/playlist/Playlist";
 import PlaylistView from "./components/playlist/PlaylistView";
 import AddPlaylist from "./components/playlist/AddPlaylist";
 import EditPlaylist from "./components/playlist/EditPlaylist";
-
 import SongPlayer from "./components/songplayer/SongPlayer";
-
 import Artists from "./components/artists/Artists";
 import AddArtist from "./components/artists/AddArtist";
 import EditArtist from "./components/artists/EditArtist";
 import ArtistView from "./components/artists/ArtistView";
-
 import Albums from "./components/albums/Albums";
 import AddAlbum from "./components/albums/AddAlbum";
 import EditAlbum from "./components/albums/EditAlbum";
 import AlbumView from "./components/albums/AlbumView";
-
 import MediaLibrary from "./components/media/MediaLibrary";
 import AddMedia from "./components/media/AddMedia";
 import EditMedia from "./components/media/EditMedia";
 import MediaView from "./components/media/MediaView";
-
 import Users from "./components/users/Users";
 import AddUser from "./components/users/AddUser";
 import EditUser from "./components/users/EditUser";
 import UserDetails from "./components/users/UserDetails";
-
 import Settings from "./components/settings/Settings";
-
 import SubscriptionList from "./components/subscriptions/SubscriptionList";
 import SubscriptionForm from "./components/subscriptions/SubscriptionForm";
 import SubscriptionDetails from "./components/subscriptions/SubscriptionDetails";
-
 import PlanList from "./components/subscriptions/PlanList";
 import PlanForm from "./components/subscriptions/PlanForm";
-
 import Ads from "./components/ads/Ads";
 import AdNetworks from "./components/ads/AdNetworks";
 import AddAd from "./components/ads/AddAd";
 import ViewAd from "./components/ads/ViewAd";
-
 import notify from "./utils/notify";
-
-import "./App.css";
-
-/* =========================================================
+import "./App.css";/* =========================================================
    API
 ========================================================= */
 
