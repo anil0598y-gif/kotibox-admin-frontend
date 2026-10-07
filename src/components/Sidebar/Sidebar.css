@@ -3,15 +3,16 @@
 ========================================= */
 
 .sidebar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
+  position: relative;      /* ✅ FIXED → RELATIVE (flexbox ke saath chalta hai) */
+  /* top: 0;   ✅ Hata diya */
+  /* left: 0;  ✅ Hata diya */
 
   width: 260px;
   min-width: 260px;
   max-width: 260px;
 
-  height: 100vh !important;
+  height: 100vh;
+  flex-shrink: 0;          /* ✅ Ye nayi line add ki - bahut important */
 
   display: flex;
   flex-direction: column;
@@ -22,7 +23,7 @@
 
   color: var(--text-primary, #ffffff);
 
-  z-index: 1000 !important;
+  z-index: 1000;
 
   overflow: hidden;
 
@@ -887,6 +888,9 @@ html[data-theme="light"] .sidebar-submenu-item:not(.active) {
 
 @media (max-width: 900px) {
   .sidebar {
+    position: fixed !important;   /* ✅ Mobile pe wapas fixed */
+    top: 0 !important;
+    left: 0 !important;
     width: 260px !important;
     min-width: 260px !important;
     max-width: 88vw !important;
