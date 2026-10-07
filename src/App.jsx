@@ -1,3 +1,4 @@
+import React, { useState, useRef, useEffect } from "react";
 import Login from "./components/auth/Login";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -37,7 +38,9 @@ import AdNetworks from "./components/ads/AdNetworks";
 import AddAd from "./components/ads/AddAd";
 import ViewAd from "./components/ads/ViewAd";
 import notify from "./utils/notify";
-import "./App.css";/* =========================================================
+import "./App.css";
+
+/* =========================================================
    API
 ========================================================= */
 
@@ -871,7 +874,8 @@ const App = () => {
 
     if (selectedId) {
       const fresh = users.find(
-        (user) => getRecordId(user) === String(selectedId)
+        (user) =>
+          getRecordId(user) === String(selectedId)
       );
       if (fresh) setSelectedUser(fresh);
       else clearPageRecord("adminSelectedUserId");
@@ -879,7 +883,8 @@ const App = () => {
 
     if (editingId) {
       const fresh = users.find(
-        (user) => getRecordId(user) === String(editingId)
+        (user) =>
+          getRecordId(user) === String(editingId)
       );
       if (fresh) setEditingUser(fresh);
       else clearPageRecord("adminEditingUserId");
