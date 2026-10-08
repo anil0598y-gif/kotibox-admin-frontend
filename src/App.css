@@ -68,7 +68,6 @@ textarea {
   width: 100%;
   overflow: hidden;
   background: var(--app-bg);
-  /* ✅ Gap zero kiya */
   gap: 0;
 }
 
@@ -80,8 +79,6 @@ textarea {
   overflow-x: hidden;
 
   padding: 20px;
-
-  /* ✅ Ye line gap ko poori tarah khatam kar degi */
   margin: 0 !important;
 
   background: var(--app-bg);
@@ -100,10 +97,8 @@ html.theme-light {
   --app-bg: #f5f6fa;
   --card-bg: #ffffff;
   --input-bg: #ffffff;
-
   --text-color: #111111;
   --muted-text: #666666;
-
   --border-color: #e5e5e5;
   --hover-bg: #f3f3f3;
 }
@@ -116,10 +111,8 @@ html.theme-dark {
   --app-bg: #111111;
   --card-bg: #1b1b1b;
   --input-bg: #222222;
-
   --text-color: #f5f5f5;
   --muted-text: #aaaaaa;
-
   --border-color: #333333;
   --hover-bg: #292929;
 }
@@ -132,10 +125,8 @@ html.theme-system {
   --app-bg: #f5f6fa;
   --card-bg: #ffffff;
   --input-bg: #ffffff;
-
   --text-color: #111111;
   --muted-text: #666666;
-
   --border-color: #e5e5e5;
   --hover-bg: #f3f3f3;
 }
@@ -145,10 +136,8 @@ html.theme-system {
     --app-bg: #111111;
     --card-bg: #1b1b1b;
     --input-bg: #222222;
-
     --text-color: #f5f5f5;
     --muted-text: #aaaaaa;
-
     --border-color: #333333;
     --hover-bg: #292929;
   }
@@ -158,17 +147,9 @@ html.theme-system {
    FONT SIZE
 ========================= */
 
-html.font-small {
-  font-size: 14px;
-}
-
-html.font-medium {
-  font-size: 16px;
-}
-
-html.font-large {
-  font-size: 18px;
-}
+html.font-small { font-size: 14px; }
+html.font-medium { font-size: 16px; }
+html.font-large { font-size: 18px; }
 
 /* =========================
    COMPACT MODE
@@ -178,32 +159,17 @@ html.compact-mode .main-content {
   padding-top: 10px;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 768px) {
-  .main-content {
-    padding: 15px;
-    padding-top: 70px; /* Mobile menu button ke liye */
-    margin-left: 0 !important;
-  }
-}
-
 /* =====================================================
-   📱 MOBILE RESPONSIVE MAGIC FIX (Phone pe automatic)
-   Laptop pe ye kuch bhi change nahi karega
+   📱 MOBILE RESPONSIVE MAGIC FIX (Perfect Card Layout)
 ===================================================== */
 
 @media (max-width: 900px) {
 
-  /* 1. Poori screen me horizontal scroll band */
   html, body {
     overflow-x: hidden !important;
     width: 100% !important;
   }
 
-  /* 2. Content full width, extra padding kam */
   .main-content {
     padding: 12px !important;
     padding-top: 70px !important;
@@ -211,15 +177,14 @@ html.compact-mode .main-content {
     overflow-x: hidden !important;
   }
 
-  /* 3. Har table ko "Card Layout" me badlo */
+  /* 1. Table ko block karo */
   table {
     display: block !important;
     width: 100% !important;
     border-collapse: separate !important;
-    border-spacing: 0 12px !important;
+    border-spacing: 0 !important;
   }
 
-  /* Table header chhupa do (mobile pe zaroorat nahi) */
   table thead {
     display: none !important;
   }
@@ -229,108 +194,107 @@ html.compact-mode .main-content {
     width: 100% !important;
   }
 
-  /* Har row ek card ban jayegi */
+  /* 2. Har row ek card */
   table tbody tr {
-    display: block !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
     width: 100% !important;
     background: var(--card-bg, #1b1b1b) !important;
     border: 1px solid var(--border-color, #333) !important;
     border-radius: 12px !important;
-    padding: 12px 14px !important;
-    margin-bottom: 12px !important;
+    padding: 14px !important;
+    margin-bottom: 14px !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    align-items: flex-start !important;
   }
 
-  /* Har cell ek block ban jaye */
-  table tbody tr td {
+  /* 3. Image wali cell (Column 1) */
+  table tbody tr td:nth-child(1) {
     display: block !important;
-    width: 100% !important;
-    padding: 4px 0 !important;
-    border: none !important;
-    text-align: left !important;
-    white-space: normal !important;
-    overflow: visible !important;
+    width: 60px !important;
+    flex-shrink: 0 !important;
   }
 
-  /* Image wali cell */
-  table tbody tr td img {
-    width: 55px !important;
-    height: 55px !important;
+  table tbody tr td:nth-child(1) img {
+    width: 60px !important;
+    height: 60px !important;
     border-radius: 10px !important;
     object-fit: cover !important;
   }
 
-  /* 4. ACTION BUTTONS (Play/Edit/Delete) - sabse important */
-  /* Ye buttons table ki aakhri cell me hote hain */
+  /* 4. Title & Artist wali cell (Column 2) */
+  table tbody tr td:nth-child(2) {
+    display: block !important;
+    width: calc(100% - 70px) !important;
+    padding-left: 12px !important;
+    padding-top: 4px !important;
+    overflow: hidden !important;
+  }
+
+  /* 5. Baaki metadata (Album, Genre, Duration etc.) - Chhote pills */
+  table tbody tr td:nth-child(n+3):not(:last-child) {
+    display: inline-block !important;
+    width: auto !important;
+    padding: 5px 10px !important;
+    margin: 8px 6px 0 0 !important;
+    background: var(--hover-bg, #292929) !important;
+    border-radius: 6px !important;
+    font-size: 11px !important;
+    color: var(--muted-text, #aaa) !important;
+    border: none !important;
+    white-space: nowrap !important;
+  }
+
+  /* 6. Action Buttons (Play/Edit/Delete) - Sabse Important */
   table tbody tr td:last-child {
     display: flex !important;
+    width: 100% !important;
     flex-wrap: wrap !important;
-    gap: 10px !important;
-    margin-top: 10px !important;
-    padding-top: 10px !important;
+    gap: 12px !important;
+    margin-top: 14px !important;
+    padding-top: 14px !important;
     border-top: 1px solid var(--border-color, #333) !important;
     justify-content: flex-start !important;
   }
 
-  /* Har button bada aur touch-friendly */
+  /* 7. Har button bada aur touch-friendly */
   table tbody tr td:last-child button,
   table tbody tr td:last-child a,
   table tbody tr td:last-child svg {
-    min-width: 42px !important;
-    min-height: 42px !important;
-    padding: 8px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    padding: 10px !important;
     border-radius: 10px !important;
     font-size: 14px !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     cursor: pointer !important;
+    background: rgba(255, 255, 255, 0.06) !important;
     pointer-events: auto !important;
-    z-index: 10 !important;
     position: relative !important;
+    z-index: 10 !important;
   }
 
-  /* 5. Search bars, inputs full width */
-  input[type="text"],
-  input[type="search"],
-  input[type="email"],
-  input[type="password"],
-  select,
-  textarea {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* 6. Page headers wrap ho jayein */
-  .page-header,
-  .dashboard-header,
-  .library-header {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 10px !important;
-  }
-
-  /* 7. Dashboard cards single column me */
-  .dashboard-cards,
-  .stats-grid,
-  .cards-grid,
-  .overview-grid {
-    grid-template-columns: 1fr !important;
-    flex-direction: column !important;
-  }
-
-  /* 8. Song name text wrap ho, ellipsis na ho */
+  /* 8. Text wrap fix */
   table tbody tr td h3,
   table tbody tr td h4,
   table tbody tr td strong,
-  table tbody tr td p {
+  table tbody tr td p,
+  table tbody tr td span {
     white-space: normal !important;
     overflow: visible !important;
     text-overflow: unset !important;
     word-break: break-word !important;
   }
 
-  /* 9. SweetAlert popup phone me theek se dikhe */
+  /* 9. Search bar, inputs full width */
+  input[type="text"], input[type="search"], input[type="email"], input[type="password"], select, textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 10. SweetAlert Popup */
   .swal2-popup {
     width: 90% !important;
     max-width: 400px !important;
@@ -356,9 +320,9 @@ html.compact-mode .main-content {
 
   table tbody tr td:last-child button,
   table tbody tr td:last-child a {
-    min-width: 40px !important;
-    min-height: 40px !important;
-    padding: 6px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 8px !important;
   }
 
   h1 { font-size: 22px !important; }
