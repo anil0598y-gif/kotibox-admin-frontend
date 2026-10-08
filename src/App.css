@@ -2,13 +2,10 @@
   --app-bg: #f5f6fa;
   --card-bg: #ffffff;
   --input-bg: #ffffff;
-
   --text-color: #111111;
   --muted-text: #666666;
-
   --border-color: #e5e5e5;
   --hover-bg: #f3f3f3;
-
   --accent-color: #111111;
   --accent-light: #f1f1f1;
 }
@@ -22,16 +19,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-
   background: var(--app-bg);
   color: var(--text-color);
-
   height: 100%;
   overflow: hidden;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 button,
@@ -59,7 +51,7 @@ textarea {
 }
 
 /* =========================
-   APP LAYOUT (FLEXBOX)
+   APP LAYOUT
 ========================= */
 
 .app {
@@ -77,16 +69,11 @@ textarea {
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-
   padding: 20px;
   margin: 0 !important;
-
   background: var(--app-bg);
   color: var(--text-color);
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 /* =========================
@@ -148,7 +135,7 @@ html.compact-mode .main-content {
 }
 
 /* =====================================================
-   📱 MOBILE SPOTIFY-LIKE SONG CARD LAYOUT
+   📱 MOBILE — COMMON
 ===================================================== */
 
 @media (max-width: 900px) {
@@ -165,150 +152,6 @@ html.compact-mode .main-content {
     overflow-x: hidden !important;
   }
 
-  /* ---- TABLE KO BLOCK KARO ---- */
-  table {
-    display: block !important;
-    width: 100% !important;
-    border-collapse: separate !important;
-    border-spacing: 0 !important;
-  }
-
-  table thead {
-    display: none !important;
-  }
-
-  table tbody {
-    display: block !important;
-    width: 100% !important;
-  }
-
-  /* ---- HAR ROW EK ROW-LIKE CARD (Spotify style) ---- */
-  table tbody tr {
-    display: flex !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    background: var(--card-bg, #1b1b1b) !important;
-    border: 1px solid var(--border-color, #333) !important;
-    border-radius: 12px !important;
-    padding: 10px 12px !important;
-    margin-bottom: 10px !important;
-    gap: 10px !important;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
-    overflow: hidden !important;
-  }
-
-  /* ---- Har cell normal (inline) ---- */
-  table tbody tr td {
-    display: block !important;
-    padding: 0 !important;
-    border: none !important;
-    vertical-align: middle !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-  }
-
-  /* ---- COLUMN 1: Song Number ---- */
-  table tbody tr td:nth-child(1) {
-    flex: 0 0 28px !important;
-    width: 28px !important;
-    font-size: 13px !important;
-    color: var(--muted-text, #888) !important;
-    text-align: center !important;
-  }
-
-  /* ---- COLUMN 2: Image + Song Name + Artist ---- */
-  table tbody tr td:nth-child(2) {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    overflow: hidden !important;
-  }
-
-  /* Song image */
-  table tbody tr td:nth-child(2) img {
-    width: 50px !important;
-    height: 50px !important;
-    min-width: 50px !important;
-    border-radius: 8px !important;
-    object-fit: cover !important;
-    flex-shrink: 0 !important;
-  }
-
-  /* Song name + artist - Ellipsis (...) */
-  table tbody tr td:nth-child(2) h3,
-  table tbody tr td:nth-child(2) h4,
-  table tbody tr td:nth-child(2) strong,
-  table tbody tr td:nth-child(2) p,
-  table tbody tr td:nth-child(2) span,
-  table tbody tr td:nth-child(2) div {
-    display: block !important;
-    max-width: 100% !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    margin: 0 !important;
-    line-height: 1.3 !important;
-  }
-
-  /* ---- COLUMN 3, 4, 5, 6: Chhupa do (mobile pe zaroorat nahi) ---- */
-  table tbody tr td:nth-child(3),
-  table tbody tr td:nth-child(4),
-  table tbody tr td:nth-child(5),
-  table tbody tr td:nth-child(6) {
-    display: none !important;
-  }
-
-  /* ---- LAST COLUMN: Action Buttons ---- */
-  table tbody tr td:last-child {
-    flex: 0 0 auto !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    background: transparent !important;
-  }
-
-  /* Buttons chhote aur clean */
-  table tbody tr td:last-child button,
-  table tbody tr td:last-child a {
-    width: 38px !important;
-    height: 38px !important;
-    min-width: 38px !important;
-    min-height: 38px !important;
-    padding: 0 !important;
-    border-radius: 8px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: transparent !important;
-    cursor: pointer !important;
-    pointer-events: auto !important;
-    position: relative !important;
-    z-index: 10 !important;
-    flex-shrink: 0 !important;
-  }
-
-  table tbody tr td:last-child svg {
-    width: 20px !important;
-    height: 20px !important;
-  }
-
-  /* Play button highlight (agar pehla button hai) */
-  table tbody tr td:last-child button:first-child {
-    color: #1db954 !important;
-  }
-
-  /* Delete button red */
-  table tbody tr td:last-child button:last-child {
-    color: #e76b6b !important;
-  }
-
-  /* ---- Search bars, inputs full width ---- */
   input[type="text"],
   input[type="search"],
   input[type="email"],
@@ -319,11 +162,412 @@ html.compact-mode .main-content {
     max-width: 100% !important;
   }
 
-  /* ---- SweetAlert Popup ---- */
   .swal2-popup {
     width: 90% !important;
     max-width: 400px !important;
     font-size: 14px !important;
+  }
+}
+
+/* =====================================================
+   📱 SONGS TABLE — MOBILE CARD
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .songs-table-container {
+    overflow: visible !important;
+  }
+
+  .songs-table {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  .songs-table thead {
+    display: none !important;
+  }
+
+  .songs-table tbody {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Card */
+  .songs-table tbody tr {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    background: var(--card-bg, #1b1b1b) !important;
+    border: 1px solid var(--border-color, #333) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .songs-table tbody tr td {
+    display: block !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+
+  /* Column 1: Number */
+  .songs-table tbody tr td:nth-child(1) {
+    flex: 0 0 26px !important;
+    width: 26px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--muted-text, #888) !important;
+    text-align: center !important;
+  }
+
+  /* Column 2: Song cell */
+  .songs-table tbody tr td:nth-child(2) {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+
+  /* Song info wrapper */
+  .songs-table tbody tr td:nth-child(2) .table-song-info {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Image container — 70x70 */
+  .songs-table tbody tr td:nth-child(2) .table-song-icon {
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
+    flex: 0 0 70px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+  }
+
+  /* Image tag — DIRECT SIZE */
+  .songs-table tbody tr td:nth-child(2) .table-song-icon img {
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    border-radius: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Fallback icon (agar image na ho) */
+  .songs-table tbody tr td:nth-child(2) .table-song-icon .song-fallback-icon {
+    width: 70px !important;
+    height: 70px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Text wrapper */
+  .songs-table tbody tr td:nth-child(2) .table-song-info > div:last-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+  }
+
+  /* Title */
+  .songs-table tbody tr td:nth-child(2) strong {
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    margin: 0 0 3px 0 !important;
+    color: var(--text-color) !important;
+  }
+
+  /* Subtitle */
+  .songs-table tbody tr td:nth-child(2) span {
+    display: block !important;
+    font-size: 12px !important;
+    color: var(--muted-text, #888) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide middle columns */
+  .songs-table tbody tr td:nth-child(3),
+  .songs-table tbody tr td:nth-child(4),
+  .songs-table tbody tr td:nth-child(5),
+  .songs-table tbody tr td:nth-child(6),
+  .songs-table tbody tr td:nth-child(7),
+  .songs-table tbody tr td:nth-child(8) {
+    display: none !important;
+  }
+
+  /* Actions */
+  .songs-table tbody tr td:nth-child(9) {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .songs-table tbody tr td:nth-child(9) .table-actions {
+    display: flex !important;
+    gap: 6px !important;
+  }
+
+  .songs-table tbody tr td:nth-child(9) button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--border-color, #333) !important;
+  }
+
+  .songs-table tbody tr td:nth-child(9) svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* =====================================================
+   📱 MEDIA TABLE — MOBILE CARD
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .media-table-wrapper {
+    overflow: visible !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .media-table {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+  }
+
+  .media-table thead {
+    display: none !important;
+  }
+
+  .media-table tbody {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Card */
+  .media-table tbody tr {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    background: var(--card-bg, #1b1b1b) !important;
+    border: 1px solid var(--border-color, #333) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .media-table tbody tr td {
+    display: block !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+
+  /* Column 1: Media cell */
+  .media-table tbody tr td:nth-child(1) {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+
+  /* Media info wrapper */
+  .media-table tbody tr td:nth-child(1) .media-name-cell {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Image — direct size */
+  .media-table tbody tr td:nth-child(1) .media-name-cell .media-preview {
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
+    flex: 0 0 70px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 10px !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Icon box (jab image na ho) */
+  .media-table tbody tr td:nth-child(1) .media-name-cell .media-icon-box {
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    min-height: 70px !important;
+    max-height: 70px !important;
+    flex: 0 0 70px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Text wrapper */
+  .media-table tbody tr td:nth-child(1) .media-name-cell > div:last-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    overflow: hidden !important;
+  }
+
+  /* Title */
+  .media-table tbody tr td:nth-child(1) strong {
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+    margin: 0 0 3px 0 !important;
+    color: var(--text-color) !important;
+  }
+
+  /* Subtitle */
+  .media-table tbody tr td:nth-child(1) span {
+    display: block !important;
+    font-size: 12px !important;
+    color: var(--muted-text, #888) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+
+  /* Hide middle columns */
+  .media-table tbody tr td:nth-child(2),
+  .media-table tbody tr td:nth-child(3),
+  .media-table tbody tr td:nth-child(4),
+  .media-table tbody tr td:nth-child(5),
+  .media-table tbody tr td:nth-child(6),
+  .media-table tbody tr td:nth-child(7),
+  .media-table tbody tr td:nth-child(8) {
+    display: none !important;
+  }
+
+  /* Actions */
+  .media-table tbody tr td:nth-child(9) {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .media-table tbody tr td:nth-child(9) .media-actions {
+    display: flex !important;
+    gap: 6px !important;
+  }
+
+  .media-table tbody tr td:nth-child(9) button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--border-color, #333) !important;
+  }
+
+  .media-table tbody tr td:nth-child(9) svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* Media library folder grid */
+  .media-folder-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .media-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .media-grid-view {
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -338,28 +582,42 @@ html.compact-mode .main-content {
     padding-top: 65px !important;
   }
 
-  table tbody tr {
-    padding: 8px 10px !important;
+  .songs-table tbody tr,
+  .media-table tbody tr {
+    padding: 10px !important;
     gap: 8px !important;
   }
 
-  table tbody tr td:nth-child(2) img {
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
+  .songs-table tbody tr td:nth-child(2) .table-song-icon,
+  .songs-table tbody tr td:nth-child(2) .table-song-icon img,
+  .media-table tbody tr td:nth-child(1) .media-name-cell .media-preview,
+  .media-table tbody tr td:nth-child(1) .media-name-cell .media-icon-box {
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    min-height: 60px !important;
+    max-height: 60px !important;
+    flex: 0 0 60px !important;
   }
 
-  table tbody tr td:last-child button,
-  table tbody tr td:last-child a {
+  .songs-table tbody tr td:nth-child(2) strong,
+  .media-table tbody tr td:nth-child(1) strong {
+    font-size: 13px !important;
+  }
+
+  .songs-table tbody tr td:nth-child(9) button,
+  .media-table tbody tr td:nth-child(9) button {
     width: 34px !important;
     height: 34px !important;
     min-width: 34px !important;
     min-height: 34px !important;
   }
 
-  table tbody tr td:last-child svg {
-    width: 18px !important;
-    height: 18px !important;
+  .songs-table tbody tr td:nth-child(9) svg,
+  .media-table tbody tr td:nth-child(9) svg {
+    width: 16px !important;
+    height: 16px !important;
   }
 
   h1 { font-size: 22px !important; }
@@ -368,12 +626,11 @@ html.compact-mode .main-content {
 }
 
 /* =====================================================
-   🎵 MEDIA LIBRARY MOBILE FIX
+   📱 MEDIA VIEW — MOBILE
 ===================================================== */
 
 @media (max-width: 900px) {
 
-  /* Media details page ka poora layout stack karo */
   .media-view-container,
   .media-detail-container,
   .media-details,
@@ -384,7 +641,6 @@ html.compact-mode .main-content {
     gap: 16px !important;
   }
 
-  /* Left side player/preview */
   .media-preview,
   .media-player-container,
   .media-view-preview {
@@ -394,7 +650,6 @@ html.compact-mode .main-content {
     padding: 16px !important;
   }
 
-  /* Right side details */
   .media-info,
   .media-info-container,
   .media-details-info {
@@ -403,68 +658,21 @@ html.compact-mode .main-content {
     padding: 16px !important;
   }
 
-  /* ====== FILENAME FIX — Sabse Important ====== */
-
-  /* Har text element jo bhi long ho, wrap ho jaye */
   .media-info *,
   .media-info-container *,
-  .media-details-info *,
-  .media-view-container *,
-  .media-detail-container * {
+  .media-details-info * {
     max-width: 100% !important;
     white-space: normal !important;
     overflow-wrap: anywhere !important;
     word-break: break-word !important;
-    hyphens: auto !important;
   }
 
-  /* Song/media title ko bada mat dikhao */
   .media-info h1,
   .media-info h2,
-  .media-info h3,
-  .media-info-container h1,
-  .media-info-container h2,
-  .media-info-container h3,
-  .media-view-container h1,
-  .media-view-container h2,
-  .media-view-container h3 {
+  .media-info h3 {
     font-size: 16px !important;
     line-height: 1.4 !important;
     word-break: break-word !important;
     overflow-wrap: anywhere !important;
   }
-
-  /* Info labels/values */
-  .media-info p,
-  .media-info span,
-  .media-info strong,
-  .media-info label,
-  .media-info-container p,
-  .media-info-container span,
-  .media-info-container strong {
-    font-size: 13px !important;
-    word-break: break-word !important;
-    overflow-wrap: anywhere !important;
-  }
-}
-
-/* =====================================================
-   🖼️ MEDIA IMAGE SHOW FIX
-===================================================== */
-
-/* Saari media images ko force show karo */
-.media-image,
-.media-cover,
-.media-thumbnail,
-.media-preview img,
-.media-view-preview img {
-  display: block !important;
-  width: 100% !important;
-  max-width: 320px !important;
-  height: auto !important;
-  min-height: 120px !important;
-  object-fit: cover !important;
-  border-radius: 12px !important;
-  margin: 0 auto 16px auto !important;
-  background: #222 !important;
 }

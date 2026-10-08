@@ -17,8 +17,12 @@ import "./SongLibrary.css";
 
 import notify from "../../utils/notify";
 
-const API_URL = "http://localhost:5000/api";
-const SERVER_URL = "http://localhost:5000";
+/* ✅ FIXED: Hardcoded URL hata diya */
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000/api";
+
+const SERVER_URL = API_URL.replace(/\/api\/?$/, "");
 
 function SongLibrary({
   setActivePage,
@@ -36,7 +40,7 @@ function SongLibrary({
   const [error, setError] = useState("");
   const [deletingId, setDeletingId] = useState(null);
 
-  /* ✅ ONLY parent songs — कोई local state नहीं */
+  /* ✅ ONLY parent songs */
   const songs = Array.isArray(parentSongs) ? parentSongs : [];
 
   /* =================================
@@ -50,6 +54,7 @@ function SongLibrary({
 
   /* =================================
      Get Image URL
+     ✅ FIXED: purane localhost URLs bhi handle karta hai
   ================================= */
 
   const getSongImage = (song) => {
@@ -64,34 +69,43 @@ function SongLibrary({
       return "";
     }
 
+    const value = String(imagePath).trim();
+
+    /* Purane localhost URLs convert karo */
+    if (value.includes("localhost:5000")) {
+      const relativePath = value.split("localhost:5000")[1];
+      return `${SERVER_URL}${relativePath}`;
+    }
+
+    if (value.includes("127.0.0.1:5000")) {
+      const relativePath = value.split("127.0.0.1:5000")[1];
+      return `${SERVER_URL}${relativePath}`;
+    }
+
     if (
-      imagePath.startsWith("http://") ||
-      imagePath.startsWith("https://") ||
-      imagePath.startsWith("blob:")
+      value.startsWith("http://") ||
+      value.startsWith("https://") ||
+      value.startsWith("blob:")
     ) {
-      return imagePath;
+      return value;
     }
 
-    if (imagePath.startsWith("/")) {
-      return `${SERVER_URL}${imagePath}`;
+    if (value.startsWith("/")) {
+      return `${SERVER_URL}${value}`;
     }
 
-    return `${SERVER_URL}/${imagePath}`;
+    return `${SERVER_URL}/${value}`;
   };
 
   /* =================================
-     Manual Refresh (only in case parent has no data)
+     Manual Refresh
   ================================= */
 
   const handleRefresh = async () => {
-    /* ⚠️ App.jsx के पास state है — यहाँ fetch नहीं करना
-       सिर्फ user को feedback देना है */
     setRefreshing(true);
     setError("");
 
     try {
-      /* ⚠️ App.jsx के refreshAll को trigger करना बेहतर होगा
-         लेकिन यहाँ सिर्फ message दिखाते हैं */
       await new Promise((resolve) =>
         setTimeout(resolve, 500)
       );
