@@ -15,8 +15,12 @@ import "./EditSong.css";
 
 import notify from "../../utils/notify";
 
-const API_URL = "http://localhost:5000/api";
-const SERVER_URL = "http://localhost:5000";
+/* ✅ FIX: Hardcoded URL hata diya, ab env se aayega */
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000/api";
+
+const SERVER_URL = API_URL.replace(/\/api\/?$/, "");
 
 /* =========================================
    GET SONG ID
@@ -37,6 +41,17 @@ const getImageUrl = (image) => {
 
   if (!value) return "";
 
+  /* ✅ FIX: Purane localhost URLs ko live server URL me convert karo */
+  if (value.includes("localhost:5000")) {
+    const relativePath = value.split("localhost:5000")[1];
+    return `${SERVER_URL}${relativePath}`;
+  }
+
+  if (value.includes("127.0.0.1:5000")) {
+    const relativePath = value.split("127.0.0.1:5000")[1];
+    return `${SERVER_URL}${relativePath}`;
+  }
+
   if (
     value.startsWith("http://") ||
     value.startsWith("https://") ||
@@ -53,7 +68,7 @@ const getImageUrl = (image) => {
 };
 
 /* =========================================
-   TEXTAREA STYLES — Common (works in light + dark)
+   TEXTAREA STYLES
 ========================================= */
 
 const textareaStyles = {
@@ -71,13 +86,6 @@ const textareaStyles = {
   boxSizing: "border-box",
 };
 
-const textareaDarkStyles = {
-  ...textareaStyles,
-  background: "#1a1a1a",
-  color: "#ffffff",
-  border: "1px solid rgba(255, 255, 255, 0.15)",
-};
-
 function EditSong({ song, setActivePage, updateSong }) {
   const [formData, setFormData] = useState({
     title: "",
@@ -88,7 +96,6 @@ function EditSong({ song, setActivePage, updateSong }) {
     releaseDate: "",
     duration: "",
     status: "Active",
-    // ✅ Lyrics fields
     lyrics: "",
     syncedLyrics: "",
   });
@@ -115,7 +122,6 @@ function EditSong({ song, setActivePage, updateSong }) {
       releaseDate: song.releaseDate || "",
       duration: song.duration || "",
       status: song.status || "Active",
-      // ✅ Lyrics fields
       lyrics: song.lyrics || "",
       syncedLyrics: song.syncedLyrics || "",
     });
@@ -250,7 +256,6 @@ function EditSong({ song, setActivePage, updateSong }) {
       data.append("duration", formData.duration);
       data.append("status", formData.status);
 
-      // ✅ Lyrics fields
       data.append("lyrics", formData.lyrics || "");
       data.append("syncedLyrics", formData.syncedLyrics || "");
 
@@ -275,6 +280,7 @@ function EditSong({ song, setActivePage, updateSong }) {
 
       const updatedSong = result.data || result.song || result;
 
+      /* ✅ Sirf state update karo — API call already ho chuki hai */
       if (typeof updateSong === "function") {
         updateSong(updatedSong);
       }
@@ -617,7 +623,7 @@ function EditSong({ song, setActivePage, updateSong }) {
           </div>
         </div>
 
-        {/* ✅ LYRICS SECTION */}
+        {/* Lyrics Section */}
         <div className="edit-song-section">
           <div className="edit-section-heading">
             <div className="edit-section-icon">
@@ -631,9 +637,15 @@ function EditSong({ song, setActivePage, updateSong }) {
             </div>
           </div>
 
-          {/* Plain Lyrics */}
           <div className="edit-form-field" style={{ marginBottom: "20px" }}>
-            <label htmlFor="lyrics" style={{ display: "block", marginBottom: "10px", fontWeight: 600 }}>
+            <label
+              htmlFor="lyrics"
+              style={{
+                display: "block",
+                marginBottom: "10px",
+                fontWeight: 600,
+              }}
+            >
               📝 Lyrics (Plain Text)
             </label>
             <textarea
@@ -641,18 +653,30 @@ function EditSong({ song, setActivePage, updateSong }) {
               name="lyrics"
               value={formData.lyrics}
               onChange={handleChange}
-              placeholder={`Paste song lyrics here...\n\nExample:\nTera naam...\nTere bina...\nTere sang...\n\nEk line ek line pe likho.`}
+              placeholder={`Paste song lyrics here...\n\nExample:\nTera naam...\nTere bina...\nTere sang...`}
               rows="12"
               style={textareaStyles}
             />
-            <small style={{ display: "block", marginTop: "8px", color: "#6b7280" }}>
-              💡 Hindi / English songs ke lyrics yahan paste karo. Ye user app me dikhenge.
+            <small
+              style={{
+                display: "block",
+                marginTop: "8px",
+                color: "#6b7280",
+              }}
+            >
+              💡 Hindi / English songs ke lyrics yahan paste karo.
             </small>
           </div>
 
-          {/* Synced Lyrics */}
           <div className="edit-form-field">
-            <label htmlFor="syncedLyrics" style={{ display: "block", marginBottom: "10px", fontWeight: 600 }}>
+            <label
+              htmlFor="syncedLyrics"
+              style={{
+                display: "block",
+                marginBottom: "10px",
+                fontWeight: 600,
+              }}
+            >
               🎵 Synced Lyrics (Optional)
             </label>
             <textarea
@@ -660,12 +684,18 @@ function EditSong({ song, setActivePage, updateSong }) {
               name="syncedLyrics"
               value={formData.syncedLyrics}
               onChange={handleChange}
-              placeholder={`[00:12.34] First line\n[00:15.67] Second line\n[00:18.90] Third line`}
+              placeholder={`[00:12.34] First line\n[00:15.67] Second line`}
               rows="8"
               style={textareaStyles}
             />
-            <small style={{ display: "block", marginTop: "8px", color: "#6b7280" }}>
-              💡 Timed lyrics (Spotify jaisa auto-scroll). Format: [MM:SS.mm] Line text
+            <small
+              style={{
+                display: "block",
+                marginTop: "8px",
+                color: "#6b7280",
+              }}
+            >
+              💡 Format: [MM:SS.mm] Line text
             </small>
           </div>
         </div>

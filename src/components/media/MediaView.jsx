@@ -10,16 +10,36 @@ import {
 } from "lucide-react";
 import "./MediaView.css";
 
-/* ✅ NAYA: notify import */
 import notify from "../../utils/notify";
 
-const SERVER_BASE_URL = "http://localhost:5000";
+/* ✅ FIX: SERVER_BASE_URL ab env se aata hai, localhost hardcoded nahi */
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:5000/api";
+
+const SERVER_BASE_URL = API_BASE_URL.replace(/\/api\/?$/, "");
 
 const toMediaUrl = (value) => {
   const url = String(value ?? "").trim();
+
   if (!url) return "";
+
+  /* ✅ FIX: purane localhost URLs ko live server URL me convert karo */
+  if (url.includes("localhost:5000")) {
+    const relativePath = url.split("localhost:5000")[1];
+    return `${SERVER_BASE_URL}${relativePath}`;
+  }
+
+  if (url.includes("127.0.0.1:5000")) {
+    const relativePath = url.split("127.0.0.1:5000")[1];
+    return `${SERVER_BASE_URL}${relativePath}`;
+  }
+
   if (/^(https?:|blob:|data:)/i.test(url)) return url;
-  return `${SERVER_BASE_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+
+  return `${SERVER_BASE_URL}${
+    url.startsWith("/") ? "" : "/"
+  }${url}`;
 };
 
 const getMediaId = (media) =>
@@ -31,7 +51,6 @@ const MediaView = ({
   openEditMedia,
   deleteMedia,
 }) => {
-  /* ⚠️ Agar media prop null hai to turant back dikhao */
   if (!media) {
     return (
       <div className="media-view-container">
@@ -53,7 +72,6 @@ const MediaView = ({
     );
   }
 
-  /* ⚠️ Agar media id missing hai to bhi back dikhao */
   const mediaId = getMediaId(media);
   if (!mediaId) {
     return (
@@ -107,8 +125,18 @@ const MediaView = ({
     return "File";
   })();
 
+  /* ✅ FIX: URL nikalna */
   const mediaUrl = toMediaUrl(
     media.url || media.filePath || media.fileUrl
+  );
+
+  /* ✅ FIX: Cover image nikalo (audio ke liye bhi) */
+  const coverImage = toMediaUrl(
+    media.previewUrl ||
+      media.imageUrl ||
+      media.coverUrl ||
+      media.coverImage ||
+      ""
   );
 
   const isUploadedMedia = media.source === "media-library";
@@ -118,6 +146,7 @@ const MediaView = ({
   ========================================================= */
 
   const renderMediaPreview = () => {
+    /* ---------- IMAGE ---------- */
     if (mediaType === "Image") {
       if (!mediaUrl) {
         return (
@@ -136,9 +165,7 @@ const MediaView = ({
             className="view-media-image"
             onError={(event) => {
               const parent = event.currentTarget.parentElement;
-
               event.currentTarget.style.display = "none";
-
               if (parent) {
                 parent.classList.add("media-error");
               }
@@ -148,8 +175,9 @@ const MediaView = ({
       );
     }
 
+    /* ---------- AUDIO ---------- */
     if (mediaType === "Audio") {
-      if (!mediaUrl) {
+      if (!mediaUrl && !coverImage) {
         return (
           <div className="view-placeholder">
             <Music2 size={60} />
@@ -160,27 +188,46 @@ const MediaView = ({
 
       return (
         <div className="view-audio-container">
-          <div className="view-audio-icon">
-            <Music2 size={60} />
-          </div>
-          <h3>{media.title || "Audio File"}</h3>
-          <audio
-            controls
-            className="view-audio-player"
-            onError={() => {
-              console.warn("Audio load failed:", mediaUrl);
-            }}
-          >
-            <source
-              src={mediaUrl}
-              type={media.fileType || "audio/mpeg"}
+          {/* ✅ FIX: Cover image show karo (agar hai toh) */}
+          {coverImage ? (
+            <img
+              src={coverImage}
+              alt={media.title || "Cover"}
+              className="view-audio-cover"
+              onError={(event) => {
+                event.currentTarget.style.display = "none";
+              }}
             />
-            Your browser does not support the audio player.
-          </audio>
+          ) : (
+            <div className="view-audio-icon">
+              <Music2 size={60} />
+            </div>
+          )}
+
+          <h3 className="view-audio-title">
+            {media.title || "Audio File"}
+          </h3>
+
+          {mediaUrl && (
+            <audio
+              controls
+              className="view-audio-player"
+              onError={() => {
+                console.warn("Audio load failed:", mediaUrl);
+              }}
+            >
+              <source
+                src={mediaUrl}
+                type={media.fileType || "audio/mpeg"}
+              />
+              Your browser does not support the audio player.
+            </audio>
+          )}
         </div>
       );
     }
 
+    /* ---------- VIDEO ---------- */
     if (mediaType === "Video") {
       if (!mediaUrl) {
         return (
@@ -195,6 +242,7 @@ const MediaView = ({
         <video
           controls
           className="view-media-video"
+          poster={coverImage || undefined}
           onError={() => {
             console.warn("Video load failed:", mediaUrl);
           }}
@@ -221,7 +269,6 @@ const MediaView = ({
   ========================================================= */
 
   const handleDelete = async () => {
-    /* ✅ alert → notify.warning */
     if (!isUploadedMedia) {
       notify.warning(
         "Ye media original module ka record hai. Isko Song, Album, Artist, Playlist ya User module se change/delete karein."
@@ -231,13 +278,11 @@ const MediaView = ({
 
     const id = getMediaId(media);
 
-    /* ✅ alert → notify.warning */
     if (!id) {
       notify.warning("Media ID nahi mili.");
       return;
     }
 
-    /* ✅ window.confirm → notify.confirmDelete */
     const confirmed = await notify.confirmDelete(
       media.title || "this media"
     );
@@ -252,7 +297,6 @@ const MediaView = ({
   ========================================================= */
 
   const handleEdit = () => {
-    /* ✅ alert → notify.warning */
     if (!isUploadedMedia) {
       notify.warning(
         "Ye media original module ka record hai. Isko Song, Album, Artist, Playlist ya User module se edit karein."
@@ -319,8 +363,10 @@ const MediaView = ({
               )}
             </div>
 
-            <div>
-              <h2>{media.title || "Untitled Media"}</h2>
+            <div className="media-view-info-title">
+              <h2 title={media.title || "Untitled Media"}>
+                {media.title || "Untitled Media"}
+              </h2>
               <span className="media-type-text">
                 {mediaType}
               </span>
@@ -426,9 +472,12 @@ const MediaView = ({
               </span>
             </div>
 
-            <div className="info-item">
+            <div className="info-item info-item-full">
               <span className="info-label">File Name</span>
-              <span className="info-value file-name">
+              <span
+                className="info-value file-name"
+                title={media.fileName || "-"}
+              >
                 {media.fileName || "-"}
               </span>
             </div>

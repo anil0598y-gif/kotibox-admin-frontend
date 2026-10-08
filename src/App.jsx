@@ -59,9 +59,7 @@ const isTokenExpired = (token) => {
   if (!token) return true;
 
   try {
-    const payload = JSON.parse(
-      atob(token.split(".")[1])
-    );
+    const payload = JSON.parse(atob(token.split(".")[1]));
 
     if (!payload.exp) return false;
 
@@ -114,7 +112,6 @@ const getObjectIdString = (value) => {
 const toServerUrl = (url) => {
   if (!url) return "";
 
-  // 🛠️ FIX: Purane localhost/127.0.0.1 wale URLs ko live server URL me convert karo
   if (url.includes("localhost:5000")) {
     const relativePath = url.split("localhost:5000")[1];
     return `${SERVER_BASE_URL}${relativePath}`;
@@ -322,7 +319,7 @@ const normalizeMedia = (item = {}) => ({
   ...item,
   id: getRecordId(item),
   url: toServerUrl(item.url || item.filePath || ""),
-  filePath: item.filePath || item.url || "",
+  filePath: toServerUrl(item.filePath || item.url || ""),
   uploadDate:
     item.uploadDate ||
     item.createdAt?.split?.("T")?.[0] ||
@@ -458,6 +455,25 @@ const App = () => {
   /* =======================================================
      ALL useEffect
   ======================================================= */
+
+  /* 🧹 LOCALSTORAGE CLEANUP */
+  useEffect(() => {
+    try {
+      const keysToCheck = [
+        "adminCurrentSong",
+        "adminSelectedMediaRecord",
+      ];
+      keysToCheck.forEach((key) => {
+        const value = localStorage.getItem(key);
+        if (value && value.includes("localhost:5000")) {
+          localStorage.removeItem(key);
+          console.log(`🧹 Cleared old localhost URL from: ${key}`);
+        }
+      });
+    } catch (err) {
+      console.warn("localStorage cleanup failed:", err);
+    }
+  }, []);
 
   /* 1️⃣ VERIFY SESSION */
   useEffect(() => {
@@ -617,8 +633,7 @@ const App = () => {
       root.classList.add(`font-${savedFont}`);
 
       const savedCompact =
-        localStorage.getItem("adminCompactMode") ===
-        "true";
+        localStorage.getItem("adminCompactMode") === "true";
 
       root.classList.toggle("compact-mode", savedCompact);
 
@@ -645,10 +660,7 @@ const App = () => {
       "adminAppearanceChanged",
       handleAppearanceChanged
     );
-    window.addEventListener(
-      "storage",
-      handleAppearanceChanged
-    );
+    window.addEventListener("storage", handleAppearanceChanged);
 
     return () => {
       window.removeEventListener(
@@ -693,8 +705,7 @@ const App = () => {
     if (!selectedPlaylist) return;
     const fresh = playlists.find(
       (playlist) =>
-        getRecordId(playlist) ===
-        getRecordId(selectedPlaylist)
+        getRecordId(playlist) === getRecordId(selectedPlaylist)
     );
     if (fresh) setSelectedPlaylist(fresh);
   }, [playlists]);
@@ -757,8 +768,7 @@ const App = () => {
 
     if (selectedId) {
       const fresh = artists.find(
-        (artist) =>
-          getRecordId(artist) === String(selectedId)
+        (artist) => getRecordId(artist) === String(selectedId)
       );
       if (fresh) setSelectedArtist(fresh);
       else clearPageRecord("adminSelectedArtistId");
@@ -766,8 +776,7 @@ const App = () => {
 
     if (editingId) {
       const fresh = artists.find(
-        (artist) =>
-          getRecordId(artist) === String(editingId)
+        (artist) => getRecordId(artist) === String(editingId)
       );
       if (fresh) setEditingArtist(fresh);
       else clearPageRecord("adminEditingArtistId");
@@ -786,8 +795,7 @@ const App = () => {
 
     if (selectedId) {
       const fresh = albums.find(
-        (album) =>
-          getRecordId(album) === String(selectedId)
+        (album) => getRecordId(album) === String(selectedId)
       );
       if (fresh) setSelectedAlbum(fresh);
       else clearPageRecord("adminSelectedAlbumId");
@@ -795,8 +803,7 @@ const App = () => {
 
     if (editingId) {
       const fresh = albums.find(
-        (album) =>
-          getRecordId(album) === String(editingId)
+        (album) => getRecordId(album) === String(editingId)
       );
       if (fresh) setEditingAlbum(fresh);
       else clearPageRecord("adminEditingAlbumId");
@@ -842,8 +849,7 @@ const App = () => {
 
     if (selectedId) {
       const fresh = mediaFiles.find(
-        (media) =>
-          getRecordId(media) === String(selectedId)
+        (media) => getRecordId(media) === String(selectedId)
       );
       if (fresh) {
         setSelectedMedia(fresh);
@@ -866,8 +872,7 @@ const App = () => {
 
     if (editingId && mediaFiles.length) {
       const fresh = mediaFiles.find(
-        (media) =>
-          getRecordId(media) === String(editingId)
+        (media) => getRecordId(media) === String(editingId)
       );
       if (fresh) setEditingMedia(fresh);
     }
@@ -885,8 +890,7 @@ const App = () => {
 
     if (selectedId) {
       const fresh = users.find(
-        (user) =>
-          getRecordId(user) === String(selectedId)
+        (user) => getRecordId(user) === String(selectedId)
       );
       if (fresh) setSelectedUser(fresh);
       else clearPageRecord("adminSelectedUserId");
@@ -894,8 +898,7 @@ const App = () => {
 
     if (editingId) {
       const fresh = users.find(
-        (user) =>
-          getRecordId(user) === String(editingId)
+        (user) => getRecordId(user) === String(editingId)
       );
       if (fresh) setEditingUser(fresh);
       else clearPageRecord("adminEditingUserId");
@@ -915,9 +918,8 @@ const App = () => {
     if (selectedId) {
       const fresh = subscriptions.find(
         (sub) =>
-          String(
-            getRecordId(sub) || sub.subscriptionId
-          ) === String(selectedId)
+          String(getRecordId(sub) || sub.subscriptionId) ===
+          String(selectedId)
       );
       if (fresh) setSelectedSubscription(fresh);
     }
@@ -925,9 +927,8 @@ const App = () => {
     if (editingId) {
       const fresh = subscriptions.find(
         (sub) =>
-          String(
-            getRecordId(sub) || sub.subscriptionId
-          ) === String(editingId)
+          String(getRecordId(sub) || sub.subscriptionId) ===
+          String(editingId)
       );
       if (fresh) setEditingSubscription(fresh);
     }
@@ -1738,8 +1739,7 @@ const App = () => {
     if (!song || !playlistId) return;
 
     const playlist = playlists.find(
-      (item) =>
-        getRecordId(item) === String(playlistId)
+      (item) => getRecordId(item) === String(playlistId)
     );
 
     if (!playlist) return;
@@ -1766,8 +1766,7 @@ const App = () => {
     songId
   ) => {
     const playlist = playlists.find(
-      (item) =>
-        getRecordId(item) === String(playlistId)
+      (item) => getRecordId(item) === String(playlistId)
     );
 
     if (!playlist) return;
@@ -1775,8 +1774,7 @@ const App = () => {
     await updatePlaylist({
       ...playlist,
       songs: (playlist.songs || []).filter(
-        (song) =>
-          getRecordId(song) !== String(songId)
+        (song) => getRecordId(song) !== String(songId)
       ),
     });
 
@@ -1819,8 +1817,7 @@ const App = () => {
     file,
     usedFor = "Image",
     extraData = {}
-  ) =>
-    addMediaFileToLibrary(file, usedFor, extraData);
+  ) => addMediaFileToLibrary(file, usedFor, extraData);
 
   /* Songs */
   const addSong = async (newSong) => {
@@ -1835,13 +1832,9 @@ const App = () => {
 
     try {
       let audioUrl =
-        newSong.audioUrl ||
-        newSong.selectedAudio?.url ||
-        "";
+        newSong.audioUrl || newSong.selectedAudio?.url || "";
       let imageUrl =
-        newSong.imageUrl ||
-        newSong.selectedImage?.url ||
-        "";
+        newSong.imageUrl || newSong.selectedImage?.url || "";
       let audioMediaId = newSong.audioMediaId || "";
       let imageMediaId = newSong.imageMediaId || "";
 
@@ -1869,8 +1862,7 @@ const App = () => {
         (newSong.coverImage || newSong.imageFile) instanceof
         Blob
       ) {
-        const file =
-          newSong.coverImage || newSong.imageFile;
+        const file = newSong.coverImage || newSong.imageFile;
 
         const media = await addMediaFileToLibrary(
           file,
@@ -1947,14 +1939,10 @@ const App = () => {
     setActivePage("edit-song");
   };
 
+  /* ✅ FIX: updateSong sirf state update karta hai.
+     API call EditSong.jsx already karta hai. */
   const updateSong = (updatedSong) => {
-    console.log("🎯 updateSong CALLED (state-only)");
-    console.log("📦 Payload:", updatedSong);
-
-    if (!updatedSong) {
-      console.warn("⚠️ updateSong: no data provided");
-      return;
-    }
+    if (!updatedSong) return;
 
     const id = getRecordId(updatedSong);
     if (!id) {
@@ -1963,11 +1951,6 @@ const App = () => {
     }
 
     const normalized = normalizeSong(updatedSong);
-
-    console.log("🎯 updateSong state update:");
-    console.log("   ID:", id);
-    console.log("   imageUrl:", normalized.imageUrl);
-    console.log("   audioUrl:", normalized.audioUrl);
 
     setSongs((prev) =>
       prev.map((song) =>
@@ -1981,7 +1964,6 @@ const App = () => {
 
     setEditingSong(null);
     clearPageRecord("adminEditingSongId");
-
     setActivePage("songs");
 
     notify.success("Song updated successfully!");
@@ -2009,8 +1991,7 @@ const App = () => {
         prev.map((artist) => ({
           ...artist,
           songs: (artist.songs || []).filter(
-            (song) =>
-              getRecordId(song) !== String(songId)
+            (song) => getRecordId(song) !== String(songId)
           ),
         }))
       );
@@ -2019,8 +2000,7 @@ const App = () => {
         prev.map((album) => ({
           ...album,
           songs: (album.songs || []).filter(
-            (song) =>
-              getRecordId(song) !== String(songId)
+            (song) => getRecordId(song) !== String(songId)
           ),
         }))
       );
@@ -2029,15 +2009,12 @@ const App = () => {
         prev.map((playlist) => ({
           ...playlist,
           songs: (playlist.songs || []).filter(
-            (song) =>
-              getRecordId(song) !== String(songId)
+            (song) => getRecordId(song) !== String(songId)
           ),
         }))
       );
 
-      if (
-        getRecordId(currentSong) === String(songId)
-      ) {
+      if (getRecordId(currentSong) === String(songId)) {
         setIsPlaying(false);
         setCurrentSong(null);
         try {
@@ -2283,8 +2260,7 @@ const App = () => {
 
     setMediaFiles((prev) =>
       prev.filter(
-        (media) =>
-          getRecordId(media) !== String(mediaId)
+        (media) => getRecordId(media) !== String(mediaId)
       )
     );
 
@@ -2414,8 +2390,7 @@ const App = () => {
         );
 
         if (media) {
-          mediaUrl =
-            media.url || media.filePath || mediaUrl;
+          mediaUrl = media.url || media.filePath || mediaUrl;
         }
       }
 
@@ -2469,8 +2444,7 @@ const App = () => {
     if (!confirmed) return;
 
     const idString = String(adId);
-    const isValidObjectId =
-      /^[0-9a-fA-F]{24}$/.test(idString);
+    const isValidObjectId = /^[0-9a-fA-F]{24}$/.test(idString);
 
     try {
       if (isValidObjectId) {
@@ -2481,9 +2455,7 @@ const App = () => {
       }
 
       setAds((prev) =>
-        prev.filter(
-          (ad) => getRecordId(ad) !== idString
-        )
+        prev.filter((ad) => getRecordId(ad) !== idString)
       );
 
       if (
@@ -2511,8 +2483,7 @@ const App = () => {
     if (!id) return;
 
     const idString = String(id);
-    const isValidObjectId =
-      /^[0-9a-fA-F]{24}$/.test(idString);
+    const isValidObjectId = /^[0-9a-fA-F]{24}$/.test(idString);
 
     try {
       if (isValidObjectId) {
@@ -2530,9 +2501,7 @@ const App = () => {
 
         setAds((prev) =>
           prev.map((ad) =>
-            getRecordId(ad) === idString
-              ? updated
-              : ad
+            getRecordId(ad) === idString ? updated : ad
           )
         );
 
@@ -2583,9 +2552,7 @@ const App = () => {
       clearPageRecord("adminEditingSubscriptionId");
       setActivePage("subscriptions");
 
-      notify.success(
-        "Subscription added successfully!"
-      );
+      notify.success("Subscription added successfully!");
     } catch (error) {
       notify.error(
         error.message || "Subscription add nahi ho payi."
@@ -2593,9 +2560,7 @@ const App = () => {
     }
   };
 
-  const updateSubscription = async (
-    updatedSubscription
-  ) => {
+  const updateSubscription = async (updatedSubscription) => {
     if (!updatedSubscription) return;
 
     const id =
@@ -2646,9 +2611,7 @@ const App = () => {
       );
       setActivePage("subscriptions");
 
-      notify.success(
-        "Subscription updated successfully!"
-      );
+      notify.success("Subscription updated successfully!");
     } catch (error) {
       notify.error(
         error.message || "Subscription update nahi ho payi."
@@ -2681,9 +2644,7 @@ const App = () => {
 
       setActivePage("subscriptions");
 
-      notify.success(
-        "Subscription deleted successfully!"
-      );
+      notify.success("Subscription deleted successfully!");
     } catch (error) {
       notify.error(
         error.message || "Subscription delete nahi ho payi."
@@ -2779,10 +2740,7 @@ const App = () => {
     });
   };
 
-  /* =======================================================
-     PLANS
-  ======================================================= */
-
+  /* PLANS */
   const addPlan = async (newPlan) => {
     if (!newPlan) return;
 
@@ -3029,10 +2987,7 @@ const App = () => {
   /* Auth */
   const handleLogin = () => {
     localStorage.setItem("adminLoggedIn", "true");
-    localStorage.setItem(
-      "adminActivePage",
-      "dashboard"
-    );
+    localStorage.setItem("adminActivePage", "dashboard");
 
     setActivePageState("dashboard");
     setIsLoggedIn(true);
@@ -3112,12 +3067,12 @@ const App = () => {
     const savedEditingUserId = localStorage.getItem(
       "adminEditingUserId"
     );
-    const savedSelectedSubscriptionId =
-      localStorage.getItem(
-        "adminSelectedSubscriptionId"
-      );
-    const savedEditingSubscriptionId =
-      localStorage.getItem("adminEditingSubscriptionId");
+    const savedSelectedSubscriptionId = localStorage.getItem(
+      "adminSelectedSubscriptionId"
+    );
+    const savedEditingSubscriptionId = localStorage.getItem(
+      "adminEditingSubscriptionId"
+    );
     const savedEditingPlanId = localStorage.getItem(
       "adminEditingPlanId"
     );
@@ -3217,8 +3172,7 @@ const App = () => {
           String(
             getRecordId(subscription) ||
               subscription.subscriptionId
-          ) ===
-          String(savedSelectedSubscriptionId || "")
+          ) === String(savedSelectedSubscriptionId || "")
       );
 
     const pageEditingSubscription =
@@ -3228,8 +3182,7 @@ const App = () => {
           String(
             getRecordId(subscription) ||
               subscription.subscriptionId
-          ) ===
-          String(savedEditingSubscriptionId || "")
+          ) === String(savedEditingSubscriptionId || "")
       );
 
     const pageEditingPlan =
@@ -3314,12 +3267,8 @@ const App = () => {
             setActivePage={setActivePage}
             addSong={addSong}
             mediaFiles={mediaFiles}
-            addImageToMediaLibrary={
-              addImageToMediaLibrary
-            }
-            addMediaFileToLibrary={
-              addMediaFileToLibrary
-            }
+            addImageToMediaLibrary={addImageToMediaLibrary}
+            addMediaFileToLibrary={addMediaFileToLibrary}
           />
         );
 
@@ -3330,12 +3279,8 @@ const App = () => {
             setActivePage={setActivePage}
             updateSong={updateSong}
             mediaFiles={mediaFiles}
-            addImageToMediaLibrary={
-              addImageToMediaLibrary
-            }
-            addMediaFileToLibrary={
-              addMediaFileToLibrary
-            }
+            addImageToMediaLibrary={addImageToMediaLibrary}
+            addMediaFileToLibrary={addMediaFileToLibrary}
           />
         );
 
@@ -3422,9 +3367,7 @@ const App = () => {
             addAlbum={addAlbum}
             songs={songs}
             mediaFiles={mediaFiles}
-            addMediaFileToLibrary={
-              addMediaFileToLibrary
-            }
+            addMediaFileToLibrary={addMediaFileToLibrary}
           />
         );
 
@@ -3436,9 +3379,7 @@ const App = () => {
             updateAlbum={updateAlbum}
             songs={songs}
             mediaFiles={mediaFiles}
-            addImageToMediaLibrary={
-              addImageToMediaLibrary
-            }
+            addImageToMediaLibrary={addImageToMediaLibrary}
           />
         );
 
@@ -3539,9 +3480,7 @@ const App = () => {
             playNextSong={playNextSong}
             playPreviousSong={playPreviousSong}
             addSongToPlaylist={addSongToPlaylist}
-            deleteSongFromPlaylist={
-              deleteSongFromPlaylist
-            }
+            deleteSongFromPlaylist={deleteSongFromPlaylist}
           />
         );
 
@@ -3590,9 +3529,7 @@ const App = () => {
       case "edit-user":
         return (
           <EditUser
-            key={
-              editingUser?.id ?? editingUser?.userId
-            }
+            key={editingUser?.id ?? editingUser?.userId}
             user={pageEditingUser}
             setActivePage={setActivePage}
             updateUser={updateUser}
@@ -3677,7 +3614,11 @@ const App = () => {
       case "edit-plan":
         return (
           <PlanForm
-            key={pageEditingPlan?._id || pageEditingPlan?.id || "edit-plan"}
+            key={
+              pageEditingPlan?._id ||
+              pageEditingPlan?.id ||
+              "edit-plan"
+            }
             plan={pageEditingPlan}
             setActivePage={setActivePage}
             onSave={updatePlan}

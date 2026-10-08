@@ -1,6 +1,6 @@
-/* ================================
-   MEDIA VIEW CONTAINER
-================================ */
+/* ============================================================
+   MEDIA VIEW — BULLETPROOF HERO STYLE
+============================================================ */
 
 .media-view-container {
   width: 100%;
@@ -11,20 +11,12 @@
   color: var(--text-color);
 }
 
-/* ================================
-   HEADER
-================================ */
-
 .media-view-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
 }
-
-/* ================================
-   BACK BUTTON
-================================ */
 
 .back-btn {
   display: flex;
@@ -47,10 +39,6 @@
   color: var(--accent-color);
 }
 
-/* ================================
-   ACTION BUTTONS
-================================ */
-
 .media-view-actions {
   display: flex;
   align-items: center;
@@ -68,79 +56,17 @@
   transition: all 0.2s ease;
 }
 
-/* ================================
-   EDIT BUTTON - SPECIAL
-================================ */
-
 .media-view-actions .edit-btn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid var(--accent-border);
-  border-radius: 8px;
   background: var(--accent-light);
   color: var(--accent-color);
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
 }
-
-.media-view-actions .edit-btn:hover {
-  background: var(--accent-light);
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px var(--accent-shadow);
-}
-
-.media-view-actions .edit-btn:active {
-  transform: scale(0.94);
-}
-
-/* ================================
-   DELETE BUTTON - SPECIAL
-================================ */
 
 .media-view-actions .delete-btn {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid #fecaca;
-  border-radius: 8px;
   background: #fff5f5;
   color: #dc2626;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
 }
-
-.media-view-actions .delete-btn:hover {
-  background: #fee2e2;
-  border-color: #ef4444;
-  color: #b91c1c;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.15);
-}
-
-.media-view-actions .delete-btn:active {
-  transform: scale(0.94);
-}
-
-/* ================================
-   MAIN CONTENT
-================================ */
 
 .media-view-content {
   display: grid;
@@ -149,134 +75,299 @@
   align-items: stretch;
 }
 
-/* ================================
-   PREVIEW
-================================ */
+/* ============================================================
+   HERO PREVIEW BOX — THE MAIN FIX
+============================================================ */
 
 .media-view-preview {
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 25px;
-  box-sizing: border-box;
+  position: relative !important;
+  width: 100% !important;
+  height: 520px !important;
+  min-height: 520px !important;
+  max-height: 520px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+  background: #000 !important;
+  border: 1px solid var(--border-color) !important;
+  display: block !important;
+  align-items: unset !important;
+  justify-content: unset !important;
 }
 
-/* ================================
-   IMAGE
-================================ */
-
-.view-media-image {
-  width: 100%;
-  max-width: 500px;
-  max-height: 500px;
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-/* ================================
-   AUDIO
-================================ */
+/* ============================================================
+   AUDIO CONTAINER — FULL ABSOLUTE
+============================================================ */
 
 .view-audio-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  flex-direction: unset !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+  gap: 0 !important;
+  overflow: hidden !important;
 }
 
-.view-audio-icon {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--accent-light);
-  color: var(--accent-color);
-  font-size: 42px;
+.view-audio-cover {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  z-index: 1 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
+/* Dark gradient overlay for text readability */
+.view-audio-container::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 35%,
+    rgba(0, 0, 0, 0.2) 55%,
+    rgba(0, 0, 0, 0.85) 100%
+  ) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* TITLE — bada aur bold, image ke upar */
+.view-audio-title {
+  position: absolute !important;
+  left: 26px !important;
+  right: 26px !important;
+  bottom: 96px !important;
+  top: auto !important;
+  z-index: 3 !important;
+  color: #ffffff !important;
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.8px !important;
+  text-align: left !important;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-width: calc(100% - 52px) !important;
+}
+
+/* PLAYER — image ke bottom pe float */
 .view-audio-player {
-  width: 100%;
-  max-width: 500px;
+  position: absolute !important;
+  left: 26px !important;
+  right: 26px !important;
+  bottom: 22px !important;
+  top: auto !important;
+  width: calc(100% - 52px) !important;
+  max-width: none !important;
+  z-index: 4 !important;
+  margin: 0 !important;
+  border-radius: 30px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* ================================
+/* Audio icon (fallback jab image na ho) */
+.view-audio-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100px !important;
+  height: 100px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  z-index: 3 !important;
+}
+
+/* ============================================================
+   IMAGE VIEW — FULL BLEED
+============================================================ */
+
+.view-image-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+.view-media-image {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+/* ============================================================
    VIDEO
-================================ */
+============================================================ */
 
 .view-media-video {
-  width: 100%;
-  max-height: 500px;
-  border-radius: 10px;
-  background: #000;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  background: #000 !important;
 }
 
-/* ================================
+/* ============================================================
    PLACEHOLDER
-================================ */
+============================================================ */
 
 .view-placeholder {
-  width: 100%;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: var(--accent-light);
-  color: var(--muted-text);
-  font-size: 18px;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  background: var(--accent-light) !important;
+  color: var(--muted-text) !important;
+  font-size: 18px !important;
 }
 
-/* ================================
-   MEDIA INFORMATION
-================================ */
+/* ============================================================
+   INFO PANEL
+============================================================ */
 
 .media-view-info {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 25px;
   box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.media-view-info h2 {
-  margin: 0 0 25px;
+.media-view-info-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.media-view-info-header .media-type-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--accent-light);
+  color: var(--accent-color);
+}
+
+.media-view-info-title {
+  min-width: 0;
+  flex: 1;
+}
+
+.media-view-info-title h2 {
+  margin: 0 0 6px;
   color: var(--text-color);
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1.35;
   word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
-/* ================================
-   INFO GRID
-================================ */
+.media-type-text {
+  display: inline-block;
+  color: var(--muted-text);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 14px;
 }
 
 .info-item {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--border-color);
+  min-width: 0;
+}
+
+.info-item-full {
+  grid-column: 1 / -1;
 }
 
 .info-label {
   color: var(--muted-text);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .info-value {
@@ -284,19 +375,23 @@
   font-size: 14px;
   font-weight: 500;
   word-break: break-word;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
 }
 
 .file-name {
   word-break: break-all;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+  display: block;
+  max-width: 100%;
+  font-size: 12px;
+  color: var(--muted-text);
 }
-
-/* ================================
-   STATUS
-================================ */
 
 .status-badge {
   width: fit-content;
-  padding: 5px 10px;
+  padding: 5px 11px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 600;
@@ -312,10 +407,6 @@
   color: #c62828;
 }
 
-/* ================================
-   EMPTY STATE
-================================ */
-
 .empty-state {
   min-height: 400px;
   display: flex;
@@ -325,15 +416,11 @@
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-}
-
-.empty-state svg {
-  color: var(--accent-color);
-  margin-bottom: 10px;
+  gap: 10px;
 }
 
 .empty-state h3 {
-  margin: 0 0 15px;
+  margin: 0;
   color: var(--text-color);
   font-size: 18px;
 }
@@ -350,64 +437,43 @@
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
-  transition: 0.2s ease;
 }
 
-.empty-state button:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-}
-
-/* ================================
-   FOCUS
-================================ */
-
-.media-view-container button:focus-visible {
-  outline: 3px solid var(--accent-shadow);
-  outline-offset: 2px;
-}
-
-/* ================================
-   RESPONSIVE
-================================ */
-
+/* RESPONSIVE */
 @media (max-width: 1000px) {
   .media-view-content {
     grid-template-columns: 1fr;
-  }
-
-  .media-view-preview {
-    min-height: 350px;
   }
 }
 
 @media (max-width: 700px) {
   .media-view-container {
-    padding: 20px;
-  }
-
-  .media-view-header {
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .media-view-actions {
-    gap: 7px;
-  }
-
-  .media-view-actions .edit-btn,
-  .media-view-actions .delete-btn {
-    width: 36px;
-    height: 36px;
-  }
-
-  .media-view-preview {
-    min-height: 300px;
     padding: 18px;
   }
 
+  .media-view-preview {
+    height: 400px !important;
+    min-height: 400px !important;
+    max-height: 400px !important;
+  }
+
+  .view-audio-title {
+    font-size: 24px !important;
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 82px !important;
+    max-width: calc(100% - 36px) !important;
+  }
+
+  .view-audio-player {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 18px !important;
+    width: calc(100% - 36px) !important;
+  }
+
   .media-view-info {
-    padding: 20px;
+    padding: 18px;
   }
 
   .info-grid {
@@ -417,24 +483,27 @@
 
 @media (max-width: 500px) {
   .media-view-container {
-    padding: 15px;
+    padding: 12px;
   }
 
-  .media-view-header {
-    flex-direction: column;
+  .media-view-preview {
+    height: 340px !important;
+    min-height: 340px !important;
+    max-height: 340px !important;
   }
 
-  .back-btn {
-    width: 100%;
-    justify-content: center;
+  .view-audio-title {
+    font-size: 20px !important;
+    left: 14px !important;
+    right: 14px !important;
+    bottom: 74px !important;
+    max-width: calc(100% - 28px) !important;
   }
 
-  .media-view-actions {
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  .media-view-info h2 {
-    font-size: 19px;
+  .view-audio-player {
+    left: 14px !important;
+    right: 14px !important;
+    bottom: 14px !important;
+    width: calc(100% - 28px) !important;
   }
 }

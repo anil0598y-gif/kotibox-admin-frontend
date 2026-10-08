@@ -366,3 +366,105 @@ html.compact-mode .main-content {
   h2 { font-size: 18px !important; }
   h3 { font-size: 16px !important; }
 }
+
+/* =====================================================
+   🎵 MEDIA LIBRARY MOBILE FIX
+===================================================== */
+
+@media (max-width: 900px) {
+
+  /* Media details page ka poora layout stack karo */
+  .media-view-container,
+  .media-detail-container,
+  .media-details,
+  .view-media-container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  /* Left side player/preview */
+  .media-preview,
+  .media-player-container,
+  .media-view-preview {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 200px !important;
+    padding: 16px !important;
+  }
+
+  /* Right side details */
+  .media-info,
+  .media-info-container,
+  .media-details-info {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 16px !important;
+  }
+
+  /* ====== FILENAME FIX — Sabse Important ====== */
+
+  /* Har text element jo bhi long ho, wrap ho jaye */
+  .media-info *,
+  .media-info-container *,
+  .media-details-info *,
+  .media-view-container *,
+  .media-detail-container * {
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+  }
+
+  /* Song/media title ko bada mat dikhao */
+  .media-info h1,
+  .media-info h2,
+  .media-info h3,
+  .media-info-container h1,
+  .media-info-container h2,
+  .media-info-container h3,
+  .media-view-container h1,
+  .media-view-container h2,
+  .media-view-container h3 {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Info labels/values */
+  .media-info p,
+  .media-info span,
+  .media-info strong,
+  .media-info label,
+  .media-info-container p,
+  .media-info-container span,
+  .media-info-container strong {
+    font-size: 13px !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+/* =====================================================
+   🖼️ MEDIA IMAGE SHOW FIX
+===================================================== */
+
+/* Saari media images ko force show karo */
+.media-image,
+.media-cover,
+.media-thumbnail,
+.media-preview img,
+.media-view-preview img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 320px !important;
+  height: auto !important;
+  min-height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  margin: 0 auto 16px auto !important;
+  background: #222 !important;
+}
