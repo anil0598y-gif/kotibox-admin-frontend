@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import AdminProfile from "./components/adminprofile/AdminProfile";
 import SongLibrary from "./components/SongLibrary/SongLibrary";
-import AddSong from "./components/AddSong/AddSong"; 
+import AddSong from "./components/AddSong/AddSong";
 import EditSong from "./components/EditSong/EditSong";
 import Playlist from "./components/playlist/Playlist";
 import PlaylistView from "./components/playlist/PlaylistView";
@@ -113,6 +113,17 @@ const getObjectIdString = (value) => {
 
 const toServerUrl = (url) => {
   if (!url) return "";
+
+  // 🛠️ FIX: Purane localhost/127.0.0.1 wale URLs ko live server URL me convert karo
+  if (url.includes("localhost:5000")) {
+    const relativePath = url.split("localhost:5000")[1];
+    return `${SERVER_BASE_URL}${relativePath}`;
+  }
+
+  if (url.includes("127.0.0.1:5000")) {
+    const relativePath = url.split("127.0.0.1:5000")[1];
+    return `${SERVER_BASE_URL}${relativePath}`;
+  }
 
   if (/^(https?:|blob:|data:)/i.test(url)) {
     return url;
@@ -2769,14 +2780,13 @@ const App = () => {
   };
 
   /* =======================================================
-     PLANS — ✅ FIXED
+     PLANS
   ======================================================= */
 
   const addPlan = async (newPlan) => {
     if (!newPlan) return;
 
     try {
-      // ✅ _id mat bhejo — MongoDB khud banayega
       const payload = cleanPayload(newPlan);
 
       const created = await requestJson(
@@ -2803,7 +2813,6 @@ const App = () => {
   const updatePlan = async (updatedPlan) => {
     if (!updatedPlan) return;
 
-    // ✅ MongoDB _id use karo (custom planId nahi)
     const id = getRecordId(updatedPlan);
 
     if (!id) {
@@ -2813,7 +2822,6 @@ const App = () => {
       return;
     }
 
-    // ✅ ObjectId validation
     if (!/^[0-9a-fA-F]{24}$/.test(String(id))) {
       notify.error(
         "Invalid plan ID. Please refresh the page."
@@ -2858,7 +2866,6 @@ const App = () => {
     const confirmed = await notify.confirmDelete("plan");
     if (!confirmed) return;
 
-    // ✅ ObjectId validation
     if (!/^[0-9a-fA-F]{24}$/.test(String(planId))) {
       notify.error(
         "Invalid plan ID. Please refresh the page."
