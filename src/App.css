@@ -189,3 +189,179 @@ html.compact-mode .main-content {
     margin-left: 0 !important;
   }
 }
+
+/* =====================================================
+   📱 MOBILE RESPONSIVE MAGIC FIX (Phone pe automatic)
+   Laptop pe ye kuch bhi change nahi karega
+===================================================== */
+
+@media (max-width: 900px) {
+
+  /* 1. Poori screen me horizontal scroll band */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* 2. Content full width, extra padding kam */
+  .main-content {
+    padding: 12px !important;
+    padding-top: 70px !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 3. Har table ko "Card Layout" me badlo */
+  table {
+    display: block !important;
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 12px !important;
+  }
+
+  /* Table header chhupa do (mobile pe zaroorat nahi) */
+  table thead {
+    display: none !important;
+  }
+
+  table tbody {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  /* Har row ek card ban jayegi */
+  table tbody tr {
+    display: block !important;
+    width: 100% !important;
+    background: var(--card-bg, #1b1b1b) !important;
+    border: 1px solid var(--border-color, #333) !important;
+    border-radius: 12px !important;
+    padding: 12px 14px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Har cell ek block ban jaye */
+  table tbody tr td {
+    display: block !important;
+    width: 100% !important;
+    padding: 4px 0 !important;
+    border: none !important;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow: visible !important;
+  }
+
+  /* Image wali cell */
+  table tbody tr td img {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 10px !important;
+    object-fit: cover !important;
+  }
+
+  /* 4. ACTION BUTTONS (Play/Edit/Delete) - sabse important */
+  /* Ye buttons table ki aakhri cell me hote hain */
+  table tbody tr td:last-child {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+    border-top: 1px solid var(--border-color, #333) !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Har button bada aur touch-friendly */
+  table tbody tr td:last-child button,
+  table tbody tr td:last-child a,
+  table tbody tr td:last-child svg {
+    min-width: 42px !important;
+    min-height: 42px !important;
+    padding: 8px !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    z-index: 10 !important;
+    position: relative !important;
+  }
+
+  /* 5. Search bars, inputs full width */
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="password"],
+  select,
+  textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 6. Page headers wrap ho jayein */
+  .page-header,
+  .dashboard-header,
+  .library-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  /* 7. Dashboard cards single column me */
+  .dashboard-cards,
+  .stats-grid,
+  .cards-grid,
+  .overview-grid {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+  }
+
+  /* 8. Song name text wrap ho, ellipsis na ho */
+  table tbody tr td h3,
+  table tbody tr td h4,
+  table tbody tr td strong,
+  table tbody tr td p {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    word-break: break-word !important;
+  }
+
+  /* 9. SweetAlert popup phone me theek se dikhe */
+  .swal2-popup {
+    width: 90% !important;
+    max-width: 400px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* =====================================================
+   📱 EXTRA SMALL PHONES (max 480px)
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .main-content {
+    padding: 10px !important;
+    padding-top: 65px !important;
+  }
+
+  table tbody tr {
+    padding: 10px !important;
+    border-radius: 10px !important;
+  }
+
+  table tbody tr td:last-child button,
+  table tbody tr td:last-child a {
+    min-width: 40px !important;
+    min-height: 40px !important;
+    padding: 6px !important;
+  }
+
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
+  h3 { font-size: 16px !important; }
+}
